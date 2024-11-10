@@ -1,0 +1,52 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+img, picture, video, iframe, figure{
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+a{
+    display: block;
+}
+p a{
+    display: inline;
+}
+li{
+    list-style-type: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, em{
+    font-size: 1em;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+form, input, textarea, select, button, label{
+    font-family: inherit;
+    font: inherit;
+    font-size: inherit;
+    hyphens: auto;
+    background-color: transparent;
+    display: block;
+    color: inherit;
+}
+svg{
+    width: 100%;
+    display: block;
+    fill: currentColor;
+}
+
+
+
