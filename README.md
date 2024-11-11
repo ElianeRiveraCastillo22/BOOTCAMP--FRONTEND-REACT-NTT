@@ -8,19 +8,7 @@ SHOP es tu tienda en línea todo-en-uno, donde encontrarás una amplia variedad 
     <img  width="400" src="assets/logos/logo-shop-main.svg">
 </div>
 
-## 3. Objetivos de la Entrega
-
-- Se deberá tomar como referencia el diseño compartido en la lámina anterior. Considera mejorar el diseño
-en base a tu imaginación.
-- Creación de un proyecto mini market place usando HTML5 y CSS3.
-- Prohíbido usar librerías como tailwind, bootstrap, etc.
-- Uso correcto de CSS3
-- Uso de flexbox
-- Diseño responsive con media queries.
-- Uso de efectos CSS3 (Opcional)
-- Subirlo al repositorio Github Público.
-
-## 4. Estructura del Proyecto
+## 1. Estructura del Proyecto
 
 La estructura de carpetas de este proyecto es la siguiente:
 
@@ -70,7 +58,7 @@ Componentes de interfaz y funcionalidades específicas
 Módulos y utilidades
 
 
-## Instalación
+## 2. Instalación
 
 Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 
@@ -82,7 +70,7 @@ Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 2. **Navega a la carpeta del proyecto:**
 
    ```bash
-   cd <projecto>
+   cd <proyecto>
     ```
 3. **Instala las dependencias usando npm:**
 
@@ -101,7 +89,7 @@ Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 
     Esto abrirá el proyecto en tu navegador, y podrás empezar a trabajar en él localmente.
 
-## Contribuciones
+## 3. Contribuciones
 
 Si deseas contribuir al proyecto, por favor sigue estos pasos:
 
@@ -117,7 +105,7 @@ Si deseas contribuir al proyecto, por favor sigue estos pasos:
     ```
 4. **Empuja tus cambios a tu repositorio: bash Copiar código**
    ```bash
-   git push origin feature/nueva-caracteristica
+   git push origin feature/diseños-y-estilos
     ```
 1. **Abre un Pull Request describiendo los cambios realizados.**
 <p align="center">Gracias por visitar mi repositorio ⭐✨</p>
