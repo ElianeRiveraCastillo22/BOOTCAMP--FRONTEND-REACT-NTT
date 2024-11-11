@@ -10,13 +10,15 @@ const control = document.querySelector(".categorie__control")
 const carouselSize = carousel.clientWidth
 
 function createCarouselPoints() {
-    for (let index = 0; index < calculateNumberOfCarouselPoints() ; index++) {
-        const small = document.createElement("small")
-        small.classList.add("control__item")
-        control.append(small)
+    if(calculateNumberOfCarouselPoints() !== 1){
+        for (let index = 0; index < calculateNumberOfCarouselPoints() ; index++) {
+            const small = document.createElement("small")
+            small.classList.add("control__item")
+            control.append(small)
+        }
+        const firtDot = document.querySelectorAll(".categorie__control small")[0]
+        firtDot.classList.add("selectedPoint")
     }
-    const firtDot = document.querySelectorAll(".categorie__control small")[0]
-    firtDot.classList.add("selectedPoint")
 }
 
 function addStylesToTheDot(dotsControl, dot) {

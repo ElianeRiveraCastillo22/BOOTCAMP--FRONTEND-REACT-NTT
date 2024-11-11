@@ -3,7 +3,7 @@ const carruselTrack = document.querySelector(".carousel-track")
 const categoriesItem = document.querySelector(".categories__item")
 const categoriesItems = document.querySelectorAll(".categories__item")
 
-const categoryCardGap = 12
+const categoryCardGap = 16
 const carouselSize = carousel.clientWidth
 const sizeOfCategoryCards = categoriesItem.clientWidth+categoryCardGap
 const numberOfCardsByCategory = categoriesItems.length
