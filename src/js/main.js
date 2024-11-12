@@ -1,4 +1,4 @@
-import { initializeCarousel } from "./js/components/carouselUI.js";
+import { initializeCarousel } from "./components/carouselUI.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     initializeCarousel()
