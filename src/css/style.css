@@ -129,6 +129,9 @@ main {
     cursor: pointer;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+.categories__item > img:hover{
+    transform: scale(1.03);
+}
 .categories__item figcaption{
     font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
     color: var(--color-High-Emphasis);
@@ -185,7 +188,7 @@ main {
 }
 .products__item {
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     padding: 16px;
@@ -193,6 +196,9 @@ main {
 }
 .products__image {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .products__description {
     display: flex;
@@ -200,14 +206,14 @@ main {
     flex-direction: column;
 }
 .products__image img{
-    width: 100%;
+    max-height: 7.5rem;
 }
-.products__size{
+.products__title{
     color: var(--color-High-Emphasis);
     font-weight: 600;
     cursor: pointer;
 }
-.products__name{
+.products__description{
     color: var(--color-Low-Emphasis);
     font-weight: 500;
 }
@@ -216,11 +222,7 @@ main {
     font-weight: 600;
     font-size: clamp(0.875rem, 0.786rem + 0.238vw, 1rem);
 }
-.products__add-to-cart {
-    border: solid .125rem var(--color-Primary);
-    border-radius: .5rem;
-    display: flex;
-}
+
 .products__add-to-cart {
     border: solid .125rem var(--color-Primary);
     border-radius: .5rem;
@@ -234,24 +236,21 @@ main {
     cursor: pointer;
 }
 .products_iconCart{
-    fill:var(--color-Bright)
+    fill:var(--color-Bright);
+    width: 1.5rem;
+    height: 1.5rem;
 }
 .products__add-to-cart:hover {
     background: var(--color-Primary);
     color: var(--color-Bright);
-}
-
-.products__add-to-cart:hover {
-    background: var(--color-Primary);
-    color: var(--color-Bright);
+    transition: fill 0.3s ease;
     & p{
         color: var(--color-Bright);
     }
-    & .products_iconCart{
-        stroke: var(--color-Bright) ;
+    & .products__cart img{
+        filter: drop-shadow(2px 2px 0.5px rgba(255, 255, 255, 1));
     }
 }
-
 .products__add-to-cart p{
     color: var(--color-Primary);
     font-weight: 600;
@@ -277,6 +276,9 @@ main {
     }
     .products__list {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .products__image img {
+        max-height: 14.5rem;
     }
     .header__input {
         min-width: 308px;

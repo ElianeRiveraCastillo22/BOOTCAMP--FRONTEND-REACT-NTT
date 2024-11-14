@@ -43,7 +43,6 @@ form, input, textarea, select, button, label{
     color: inherit;
 }
 svg{
-    width: 100%;
     display: block;
     fill: currentColor;
 }
