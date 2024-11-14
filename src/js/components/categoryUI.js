@@ -1,5 +1,6 @@
 import { getProductCategoryList, BASE_API } from "../services/api.js";
 import { templateCategoryCart } from "../template/categoryCart.js";
+import { initializeCarousel } from "./carouselUI.js";
 
 const carouselTrack = document.querySelector(".carousel-track")
 
@@ -9,6 +10,15 @@ async function showCategoryList() {
     arrayCategoryList.forEach(category => {
         carouselTrack.appendChild(templateCategoryCart(`assets/icons/category/${category}.svg`, category))
     });
+
+    const categoriesItem = document.querySelector(".categories__item")
+    const categoriesItems = document.querySelectorAll(".categories__item")
+
+    const categoryCardGap = 16
+    const sizeOfCategoryCards = categoriesItem.clientWidth + categoryCardGap
+    const numberOfCardsByCategory = categoriesItems.length
+
+    initializeCarousel(numberOfCardsByCategory, sizeOfCategoryCards)
 
 }
 
