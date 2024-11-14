@@ -1,4 +1,4 @@
-export function templateCategoryCart(imgCategory, nameCategory ) {
+export function templateCategoryCard(imgCategory, nameCategory ) {
 
     const cardCategory = document.createElement("figure")
     cardCategory.classList.add("categories__item")
