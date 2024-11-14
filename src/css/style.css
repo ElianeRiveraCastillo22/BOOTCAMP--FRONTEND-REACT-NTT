@@ -34,11 +34,6 @@ a{
 p{
     font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
 }
-figcaption{
-    font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
-    color: var(--color-High-Emphasis);
-    font-weight: 500;
-}
 
 /* header */
 .header__logo {
@@ -55,6 +50,8 @@ figcaption{
 .header__main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 .header__search.header__search--desktop{
     display: none;
@@ -68,6 +65,10 @@ figcaption{
 .header__icon {
     position: absolute;
     right: .5rem;
+    cursor: pointer;
+}
+.header__icon:hover {
+    transform: scale(1.2)
 }
 .header__input {
     width: 100%;
@@ -75,12 +76,14 @@ figcaption{
     background: var(--color-Grey);
     border-radius: .25rem;
     outline: none;
+    cursor: pointer;
 }
 .header__cart {
     padding-right: .5rem;
 }
 .header__nav {
     position: relative;
+    cursor: pointer;
 }
 .header__counter {
     clip-path: circle(50%);
@@ -96,6 +99,10 @@ figcaption{
     justify-content: center;
     color: var(--color-Bright);
     font-weight: 600;
+}
+.header__nav:hover {
+    transform: scale(1.2);
+    z-index: 1;
 }
 
 main {
@@ -119,7 +126,19 @@ main {
 .categories__item > img{
     width: 100%;
     border-radius: .5rem;
+    cursor: pointer;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.categories__item figcaption{
+    font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
+    color: var(--color-High-Emphasis);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+}
+.categories__item figcaption:hover{
+    transform: scale(1.1);
+    color: var();
 }
 /* categoria list*/
 .categories {
@@ -151,6 +170,11 @@ main {
     display: block;
     background: var(--color-Grey);
     clip-path: circle(50%);
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.control__item:hover {
+    background: var(--color-Primary-Tint);
 }
 .control__item.selectedPoint {
     background: #1B4B66;
@@ -168,6 +192,9 @@ main {
     padding: 16px;
     border-radius: 8px;
 }
+.products__image {
+    cursor: pointer;
+}
 .products__description {
     display: flex;
     gap: .25rem;
@@ -179,6 +206,7 @@ main {
 .products__size{
     color: var(--color-High-Emphasis);
     font-weight: 600;
+    cursor: pointer;
 }
 .products__name{
     color: var(--color-Low-Emphasis);
@@ -204,6 +232,7 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 .products_iconCart{
     fill:var(--color-Bright)
