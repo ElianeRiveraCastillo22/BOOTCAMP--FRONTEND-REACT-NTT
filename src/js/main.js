@@ -1,5 +1,7 @@
-import { initializeCarousel } from "./components/carouselUI.js";
+import { renderCategories } from "./components/categoryUI.js";
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    initializeCarousel()
+document.addEventListener("DOMContentLoaded", async()=>{
+
+    await renderCategories()
+
 })
