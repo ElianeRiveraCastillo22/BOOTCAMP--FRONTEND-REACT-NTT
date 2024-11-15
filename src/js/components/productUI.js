@@ -1,5 +1,5 @@
 import { BASE_API, getAllProducts } from "../services/api.js"
-import { addToCart, cart, updateCartCount } from "../services/cartService.js";
+import { addToCart, cart, filterExistingProducts, updateCartCount } from "../services/cartService.js";
 import { templateProductCard } from "../template/productCard.js"
 
 const productsList = document.querySelector(".products__list")
@@ -26,10 +26,10 @@ function showProducts(arrProducts) {
                 id: button.dataset.idproduct,
                 quantity: 1
             }
-
-            addToCart(productToAddToCart)
+            const isProductExist = filterExistingProducts(productToAddToCart)
+            isProductExist ? isProductExist.quantity++ : addToCart(productToAddToCart)
             updateCartCount()
-            console.log(cart)
+
         })
     })
 }

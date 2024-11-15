@@ -1,5 +1,9 @@
 let cart = [];
 
+function filterExistingProducts(newproduct) {
+    return cart.find((product)=>product.id == newproduct.id)
+}
+
 function addToCart(product) {
     cart.push(product);
     getCartCount()
@@ -20,5 +24,6 @@ export{
     addToCart,
     getCartCount,
     updateCartCount,
-    cart
+    cart,
+    filterExistingProducts
 }
