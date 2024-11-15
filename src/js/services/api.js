@@ -5,10 +5,12 @@ async function getProductCategoryList(BASE_API, PATH) {
 
     try{
         const response = await fetch(BASE_API + PATH);
-        const data = await response.json()
-        return data;
+        if(!response.ok){
+            throw new Error("Error al consumir la lista de categorías",response.statusText)
+        }
+        return await response.json();
     }catch(error){
-        console.error(`Error al consumir la lista de categorias ${error}`)
+        console.error(`Error: ${error}`)
     }
 
 }
@@ -16,10 +18,12 @@ async function getProductCategoryList(BASE_API, PATH) {
 async function getAllProducts(BASE_API, PATH) {
     try{
         const response = await fetch(BASE_API + PATH);
-        const data = await response.json()
-        return data;
+        if(!response.ok){
+            throw new Error("Error al consumir la lista de productos ",response.statusText)
+        }
+        return await response.json();
     }catch(error){
-        console.error(`Error al consumir la lista de porductos ${error}`)
+        console.error(`Error: ${error}`)
     }
 }
 
