@@ -1,37 +1,43 @@
-export function templateProductCard(imgurlProduct, descriptionProduct, priceProduct, nameProduct){
+export function templateProductCard({
+    id,
+    productTitle,
+    productImage,
+    availabilityStatus,
+    productPrice
+}){
     const product = document.createElement('article');
     product.classList.add('products__item');
 
     const productImageBox = document.createElement('figure');
     productImageBox.classList.add('products__image');
 
-    const productImage = document.createElement('img');
-    productImage.src = imgurlProduct;
-    productImage.alt = 'Producto Blossom Pouch';
+    const elemProductImage = document.createElement('img');
+    elemProductImage.src = productImage;
+    elemProductImage.alt = 'Producto Blossom Pouch';
 
-    productImageBox.appendChild(productImage);
+    productImageBox.appendChild(elemProductImage);
 
     const descriptionContainer = document.createElement('section');
     descriptionContainer.classList.add('products__description');
 
     const title = document.createElement('p');
     title.classList.add('products__title');
-    title.textContent = nameProduct;
+    title.textContent = productTitle;
     descriptionContainer.appendChild(title);
 
     const description = document.createElement('p');
     description.classList.add('products__descriptionText');
-    description.textContent = descriptionProduct;
+    description.textContent = availabilityStatus;
     descriptionContainer.appendChild(description);
 
     const price = document.createElement('p');
     price.classList.add('products__price');
-    price.textContent = priceProduct;
+    price.textContent = productPrice;
     descriptionContainer.appendChild(price);
 
     const button = document.createElement('button');
     button.classList.add('products__add-to-cart');
-
+    button.dataset.idproduct = id
     const containerSvg = document.createElement('figure');
     containerSvg.classList.add('products__cart');
 

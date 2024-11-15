@@ -1,4 +1,5 @@
 import { BASE_API, getAllProducts } from "../services/api.js"
+import { addToCart, cart, updateCartCount } from "../services/cartService.js";
 import { templateProductCard } from "../template/productCard.js"
 
 const productsList = document.querySelector(".products__list")
@@ -6,9 +7,31 @@ const productsList = document.querySelector(".products__list")
 function showProducts(arrProducts) {
 
     arrProducts.forEach(product => {
-        productsList.appendChild(templateProductCard(product.images[0], product.availabilityStatus, product.price, product.title))
+        const valuesProduct = {
+            id: product.id,
+            productTitle:product.title,
+            productImage: product.images[0],
+            availabilityStatus: product.availabilityStatus,
+            productPrice:product.price
+        }
+        productsList.appendChild(templateProductCard(valuesProduct))
     });
 
+    const productButtons = document.querySelectorAll(".products__add-to-cart")
+
+    productButtons.forEach((button)=>{
+        button.addEventListener("click", ()=>{
+
+            const productToAddToCart = {
+                id: button.dataset.idproduct,
+                quantity: 1
+            }
+
+            addToCart(productToAddToCart)
+            updateCartCount()
+            console.log(cart)
+        })
+    })
 }
 
 async function renderProducts() {
