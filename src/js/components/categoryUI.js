@@ -33,18 +33,13 @@ async function showCategoryList() {
 
                 productsList.innerHTML = ""
                 showProducts(categoryProducts.products)
-/*                 if(filteredProducts.length <= 0){
-                    productsList.appendChild(nameFilterErrorTemplate())
-                    productsList.classList.add("products__list--error")
-                }else{
-                    productsList.classList.remove("products__list--error")
-                    showProducts(filteredProducts)
-                } */
+
             })
         })
     }
     getClickedCategoryName(categoryCardText)
     getClickedCategoryName(categoryCardImage)
+
 }
 
 export async function renderCategories() {
