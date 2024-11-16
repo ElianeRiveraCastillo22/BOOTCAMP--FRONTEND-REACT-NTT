@@ -8,11 +8,10 @@ export function setupHeaderFilter() {
     function getActiveInput() {
 
         let inputActivo
-        const desktopInputBox = document.querySelector(".header__search--desktop")
         const desktopInput = document.querySelector(".header__input--desktop")
         const mobileInput = document.querySelector(".header__input--mobile")
 
-        getComputedStyle(desktopInputBox).display == "none" ? inputActivo = mobileInput : inputActivo = desktopInput
+        getComputedStyle(desktopInput).display == "none" ? inputActivo = mobileInput : inputActivo = desktopInput
 
         return inputActivo
 
