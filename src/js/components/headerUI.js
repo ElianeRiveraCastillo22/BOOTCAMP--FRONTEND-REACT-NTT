@@ -23,9 +23,10 @@ export function setupHeaderFilter() {
         let resposeProductList;
         if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
         else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
-        const filteredProducts = filterProductNames(resposeProductList.products, event.target.value)
-        const productsList = document.querySelector(".products__list")
 
+        const filteredProducts = filterProductNames(resposeProductList.products, event.target.value)
+
+        const productsList = document.querySelector(".products__list")
         productsList.innerHTML = ""
 
         if(filteredProducts.length <= 0){

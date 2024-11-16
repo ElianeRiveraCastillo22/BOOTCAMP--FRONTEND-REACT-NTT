@@ -1,4 +1,4 @@
-import { getProductCategoryList, BASE_API, getCategoryProducts } from "../services/api.js";
+import { getProductCategoryList, BASE_API, getCategoryProducts, getAllProducts } from "../services/api.js";
 import { templateCategoryCard } from "../template/categoryCard.js";
 import { initializeCarousel } from "./carouselUI.js";
 import { showProducts } from "./productUI.js";
@@ -10,7 +10,10 @@ const carouselTrack = document.querySelector(".carousel-track")
 function addSelectionStylesToCategoryCard(activeCategory) {
 
     if(!activeCategory.classList.value) activeCategory.classList.add("categories__item--selected")
-    else activeCategory.classList.remove("categories__item--selected")
+    else {
+        sessionStorage.setItem("lastAPICalled", `/products`)
+        activeCategory.classList.remove("categories__item--selected")
+    }
 
 }
 
@@ -29,16 +32,19 @@ function getClickedCategoryName(categories, categoryCardText) {
     categories.forEach((elementCategory, elementCategoryIndex)=>{
         elementCategory.addEventListener("click", async()=>{
 
-            const categoryProducts =await getCategoryProducts(BASE_API, `/products/category/${elementCategory.dataset.category}`)
-
             sessionStorage.setItem("lastAPICalled", `/products/category/${elementCategory.dataset.category}`)
 
             const productsList = document.querySelector(".products__list")
             productsList.innerHTML = ""
-            showProducts(categoryProducts.products)
 
             addSelectionStylesToCategoryCard(categoryCardText[elementCategoryIndex])
             removeSelectionStylesFromPreviousCard(categoryCardText, categoryCardText[elementCategoryIndex])
+
+            let resposeProductList;
+            if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
+            else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
+
+            showProducts(resposeProductList.products)
 
         })
     })
