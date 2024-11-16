@@ -76,6 +76,12 @@ p{
     display: none;
 }
 
+.header__profile:hover{
+    transform: scale(1.2);
+}
+.header__profile{
+    cursor: pointer;
+}
 .header__profile img{
     height: 1.625rem;
 }
@@ -231,6 +237,7 @@ main {
 }
 .products__image img{
     max-height: 7.5rem;
+    max-width: 100%;
 }
 .products__title{
     color: var(--color-High-Emphasis);
