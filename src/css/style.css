@@ -129,6 +129,12 @@ main {
     cursor: pointer;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+.categories__item .categories__item--selected{
+    color: var(--color-Primary);
+    font-weight: 900;
+    transition: fill 0.1s ease;
+    transform: scale(1.03);
+}
 .categories__item > img:hover{
     transform: scale(1.03);
 }
@@ -251,6 +257,7 @@ main {
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
+    gap: .25rem;
 }
 .products_iconCart{
     fill:var(--color-Bright);
