@@ -39,6 +39,7 @@ async function renderProducts() {
     try{
 
         const arrayCategoryList = await getAllProducts(BASE_API, '/products')
+        sessionStorage.setItem("lastAPICalled", "/products")
         if(!arrayCategoryList) throw new Error("lo sentimos no se encontro la lista de productos", arrayCategoryList)
         showProducts(arrayCategoryList.products)
 

@@ -29,6 +29,7 @@ async function showCategoryList() {
         categories.forEach((elementCategory)=>{
             elementCategory.addEventListener("click", async()=>{
                 const categoryProducts =await getCategoryProducts(BASE_API, `/products/category/${elementCategory.dataset.category}`)
+                sessionStorage.setItem("lastAPICalled", `/products/category/${elementCategory.dataset.category}`)
                 const productsList = document.querySelector(".products__list")
 
                 productsList.innerHTML = ""
