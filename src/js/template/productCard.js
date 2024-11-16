@@ -32,7 +32,7 @@ export function templateProductCard({
 
     const price = document.createElement('p');
     price.classList.add('products__price');
-    price.textContent = productPrice;
+    price.textContent = `$ ${productPrice}`;
     descriptionContainer.appendChild(price);
 
     const button = document.createElement('button');
