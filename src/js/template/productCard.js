@@ -59,7 +59,7 @@ export function templateProductCard({
     button.appendChild(svg); */
 
     const buttonText = document.createElement('p');
-    buttonText.textContent = 'Add to Bag';
+    buttonText.textContent = 'Add to cart';
 
     button.appendChild(containerSvg)
     button.appendChild(buttonText);
