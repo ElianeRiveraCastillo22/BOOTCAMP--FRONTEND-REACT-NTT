@@ -8,57 +8,99 @@ SHOP es tu tienda en línea todo-en-uno, donde encontrarás una amplia variedad 
     <img  width="400" src="assets/logos/logo-shop-main.svg">
 </div>
 
-## 1. Estructura del Proyecto
+## 1. Tecnologías
+
+Este proyecto utiliza las siguientes tecnologías para su desarrollo:
+
+- **JavaScript**: Lenguaje de programación para la lógica del sitio y la interacción del usuario.
+- **CSS**: Estilos para el diseño y la apariencia visual del e-commerce.
+- **HTML**: Estructura básica y contenido de las páginas web.
+
+Estas tecnologías permiten crear una experiencia dinámica y atractiva para el usuario final.
+
+## 2. Estructura del Proyecto
 
 La estructura de carpetas de este proyecto es la siguiente:
 
 ```text
-├── README.md
-├── package.json
-├── index.html
-├── .gitignore
+
 ├── assets
 |  ├── icons
 |  |  ├── category
+|  |  ├── social-media
 |  ├── images
 |  ├── logos
 ├── src
 |  ├── css
 |  ├── js
 |  |  |  ├── components
-|  |  |  ├── module
+|  |  |  ├── modules
+|  |  |  ├── services
+|  |  |  ├── template
+|  |  |  ├── utils
 |  ├── main.js
+├── README.md
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── index.html
 ```
-
-### `index.html`
-Acá va la página que se mostrará al usuario.
-
 ### `assets`
-Recursos estáticos de la aplicación
+Contiene los archivos estáticos que no cambian durante la ejecución del sitio. Estos incluyen imágenes, iconos y logos, que generalmente se cargan en el frontend.
 
 ### `assets/icons`
-Imágenes generales
+Guarda los iconos de la aplicación.
 
-### `assets/images`
-Íconos en SVG, PNG, etc.
+### `assets/icons/category`
+Iconos relacionados con categorías de productos o secciones del sitio.
 
-### `assets/logos`
-Logos de la aplicación
+### `assets/icons/social-media`
+Iconos para enlaces a redes sociales, como Facebook, Twitter, Instagram, etc.
+
+### `src/`
+Contiene el código fuente del proyecto. Aquí es donde resides las funcionalidades principales del sitio web.
 
 ### `src/css`
-Archivos de estilos CSS
+Contiene los archivos de estilos CSS del sitio.
 
 ### `src/js`
-Carpeta para los archivos JavaScript
+Contiene los archivos de JavaScript que manejan la lógica de la aplicación. Está organizado en subcarpetas para una mayor claridad
 
 ### `src/js/components`
-Componentes de interfaz y funcionalidades específicas
+contiene los fragmentos modulares de la interfaz de usuario (UI) de la aplicación. Cada componente es responsable de la creación dinámica del DOM y la renderización de templates utilizando JavaScript puro.
 
 ### `src/js/modules`
-Módulos y utilidades
+ se utiliza para contener los servicios que gestionan la lógica de negocio de la aplicación, pero que no dependen de servicios externos.
 
+### `src/js/services`
+Aquí se agrupan los archivos encargados de interactuar con servicios externos o APIs, como los servicios de productos, categorías, autenticación, etc.
 
-## 2. Instalación
+### `src/js/template`
+Lógica para renderizar productos en el DOM
+ Este directorio contiene plantillas o configuraciones del sitio que se utilizan para estructurar páginas de manera reutilizable.
+ 
+### `src/js/utils`
+Esta carpeta incluye funciones de utilidad que pueden ser utilizadas en cualquier parte de la aplicación
+
+### `main.js`
+Este es el archivo de entrada principal para el JavaScript de tu aplicación.
+
+### `README.md`
+Contiene información sobre el proyecto, instrucciones de instalación, uso y cualquier otra información relevante para los desarrolladores que trabajen en el proyecto o para aquellos que quieran contribuir.
+
+### `package.json`
+Es el archivo donde se configuran las dependencias del proyecto, scripts de desarrollo, configuración de paquetes, etc.
+
+### `package-lock.json`
+Este archivo asegura que las mismas versiones de las dependencias se instalen en diferentes entornos. Si usas npm, este archivo se genera automáticamente al instalar dependencias y ayuda a evitar discrepancias en las versiones de las bibliotecas.
+
+#### `.gitignore`
+Este archivo le dice a Git qué archivos o directorios deben ser ignorados, como las dependencias del proyecto o archivos temporales generados durante el desarrollo.
+
+### `index.html`
+El archivo HTML principal de la aplicación. Es el que contiene la estructura básica del sitio web, los vínculos a los archivos CSS y JS, y es cargado cuando el usuario visita el sitio web.
+
+## 3. Instalación
 
 Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 
@@ -70,9 +112,13 @@ Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 2. **Navega a la carpeta del proyecto:**
 
    ```bash
-   cd <proyecto>
+   cd BOOTCAMP--FRONTEND-REACT-NTT
+3. **Cambia de rama:**
+
+   ```bash
+   git checkout feature/javascript 
     ```
-3. **Instala las dependencias usando npm:**
+4. **Instala las dependencias usando npm:**
 
     Este proyecto utiliza Vite como herramienta de construcción y servidor de desarrollo. Para instalar las dependencias, ejecuta:
 
@@ -86,26 +132,33 @@ Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
    ```bash
    npm run dev
     ```
+## 4. Uso del Proyecto
 
-    Esto abrirá el proyecto en tu navegador, y podrás empezar a trabajar en él localmente.
+Este e-commerce ofrece una experiencia intuitiva y fácil para encontrar y comprar productos. A continuación, te explicamos cómo utilizar sus principales funcionalidades:
 
-## 3. Contribuciones
+### **Explorar Productos**
 
-Si deseas contribuir al proyecto, por favor sigue estos pasos:
+En la página principal, puedes navegar por todos los productos disponibles. Estos están organizados de manera clara y categorizada para que puedas encontrar lo que buscas rápidamente.
 
-1. **Haz un fork del repositorio.**
-2. **Crea una nueva rama para tu característica o corrección de errores: bash Copiar código**
+### **Búsqueda por Nombre**
 
-   ```bash
-   git checkout -b feature/diseños-y-estilos
-    ```
-3. **Realiza tus cambios y haz commit: bash Copiar código**
-   ```bash
-   git commit -m "Descripción de los cambios"
-    ```
-4. **Empuja tus cambios a tu repositorio: bash Copiar código**
-   ```bash
-   git push origin feature/diseños-y-estilos
-    ```
-1. **Abre un Pull Request describiendo los cambios realizados.**
+Utiliza la barra de búsqueda ubicada en la parte superior de la página para buscar productos específicos por su nombre. Simplemente escribe el nombre del producto que deseas encontrar, y el sistema mostrará las coincidencias en tiempo real.
+
+### **Filtrar por Categoría**
+
+Puedes filtrar los productos según diferentes categorías para reducir los resultados y ver solo los productos relacionados con lo que más te interesa. Para ello, selecciona una categoría desde el menú de filtros, ubicado en la barra lateral o en el área correspondiente de la página.
+
+### **Agregar al Carrito**
+
+Cuando encuentres un producto que te guste, haz clic en el botón **"Agregar al carrito"**. El producto será añadido a tu carrito de compras y podrás continuar explorando más productos. Cuando estés listo para finalizar la compra, puedes proceder con el pago directamente desde el carrito.
+
+---
+
+Estas funcionalidades están diseñadas para facilitar la navegación y hacer la experiencia de compra más rápida y agradable.
+
+
+
+
+<br>
+<br>
 <p align="center">Gracias por visitar mi repositorio ⭐✨</p>
