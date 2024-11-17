@@ -146,15 +146,15 @@ Utiliza la barra de búsqueda ubicada en la parte superior de la página para bu
 
 ### **Filtrar por Categoría**
 
-Puedes filtrar los productos según diferentes categorías para reducir los resultados y ver solo los productos relacionados con lo que más te interesa. Para ello, selecciona una categoría desde el menú de filtros, ubicado en la barra lateral o en el área correspondiente de la página.
+Puedes filtrar los productos según diferentes categorías para reducir los resultados y ver solo los productos relacionados con lo que más te interesa. Para ello, selecciona una categoría desde el carrusel.
 
 ### **Agregar al Carrito**
 
-Cuando encuentres un producto que te guste, haz clic en el botón **"Agregar al carrito"**. El producto será añadido a tu carrito de compras y podrás continuar explorando más productos. Cuando estés listo para finalizar la compra, puedes proceder con el pago directamente desde el carrito.
+Cuando encuentres un producto que te guste, haz clic en el botón **"Add to cart"**. El producto será añadido a tu carrito de compras y podrás continuar explorando más productos.
 
 ---
 
-Estas funcionalidades están diseñadas para facilitar la navegación y hacer la experiencia de compra más rápida y agradable.
+Estas funcionalidades están diseñadas para facilitar la navegación y hacer la experiencia de compra más rápida y agradable.J
 
 
 
