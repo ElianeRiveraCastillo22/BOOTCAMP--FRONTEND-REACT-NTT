@@ -14,7 +14,7 @@ export function templateProductCard({
     const elemProductImage = document.createElement('img');
     elemProductImage.src = productImage;
     elemProductImage.alt = 'Producto Blossom Pouch';
-
+    elemProductImage.loading = "lazy"
     productImageBox.appendChild(elemProductImage);
 
     const descriptionContainer = document.createElement('section');
