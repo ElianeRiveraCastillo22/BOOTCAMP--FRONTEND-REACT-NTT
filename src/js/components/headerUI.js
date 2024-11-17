@@ -1,6 +1,7 @@
 import { BASE_API, getAllProducts, getCategoryProducts } from "../services/api.js";
 import { filterProductNames } from "../services/productService.js";
 import { nameFilterErrorTemplate } from "../template/nameFilterErrorTemplate.js";
+import { renderProductSkeletons } from "./productSkeletonUI.js";
 import { showProducts } from "./productUI.js";
 
 export function setupHeaderFilter() {
@@ -18,23 +19,36 @@ export function setupHeaderFilter() {
     }
 
     getActiveInput().addEventListener("input", async(event)=>{
+        try{
 
-        let resposeProductList;
-        if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
-        else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
+            let resposeProductList;
+            if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
+            else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
 
-        const filteredProducts = filterProductNames(resposeProductList.products, event.target.value)
+            const filteredProducts = filterProductNames(resposeProductList.products, event.target.value)
 
-        const productsList = document.querySelector(".products__list")
-        productsList.innerHTML = ""
+            const productsList = document.querySelector(".products__list")
+            productsList.innerHTML = ""
+            renderProductSkeletons(productsList)
 
-        if(filteredProducts.length <= 0){
-            productsList.appendChild(nameFilterErrorTemplate())
-            productsList.classList.add("products__list--error")
-        }else{
-            productsList.classList.remove("products__list--error")
-            showProducts(filteredProducts)
+            if(filteredProducts.length <= 0){
+
+                productsList.innerHTML = ""
+                productsList.appendChild(nameFilterErrorTemplate())
+                productsList.classList.add("products__list--error")
+
+            }else{
+
+                productsList.innerHTML = ""
+                productsList.classList.remove("products__list--error")
+                showProducts(filteredProducts)
+
+            }
+
+        }catch(error){
+            console.log(error)
         }
+
 
     })
 

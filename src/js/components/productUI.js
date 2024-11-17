@@ -1,6 +1,7 @@
 import { BASE_API, getAllProducts } from "../services/api.js"
 import { addToCart, cart, filterExistingProducts, updateCartCount } from "../services/cartService.js";
 import { templateProductCard } from "../template/productCard.js"
+import { renderProductSkeletons } from "./productSkeletonUI.js";
 
 const productsList = document.querySelector(".products__list")
 
@@ -36,12 +37,15 @@ function showProducts(arrProducts) {
 
 async function renderProducts() {
 
+    renderProductSkeletons(productsList)
+
     try{
 
         const arrayCategoryList = await getAllProducts(BASE_API, '/products')
         sessionStorage.setItem("lastAPICalled", "/products")
         if(!arrayCategoryList) throw new Error("lo sentimos no se encontro la lista de productos", arrayCategoryList)
-        showProducts(arrayCategoryList.products)
+        productsList.innerHTML = ""
+        return showProducts(arrayCategoryList.products)
 
     }catch(error){
         console.error("Error", error)

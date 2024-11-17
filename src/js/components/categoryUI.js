@@ -1,10 +1,12 @@
 import { getProductCategoryList, BASE_API, getCategoryProducts, getAllProducts } from "../services/api.js";
 import { templateCategoryCard } from "../template/categoryCard.js";
 import { initializeCarousel } from "./carouselUI.js";
+import { renderCategoryControlSkeleton, renderCategorySkeleton } from "./categorySkeletonUI.js";
+import { renderProductSkeletons } from "./productSkeletonUI.js";
 import { showProducts } from "./productUI.js";
 
 const carouselTrack = document.querySelector(".carousel-track")
-
+const categorieControl = document.querySelector(".categorie__control")
 
 
 function addSelectionStylesToCategoryCard(activeCategory) {
@@ -40,11 +42,19 @@ function getClickedCategoryName(categories, categoryCardText) {
             addSelectionStylesToCategoryCard(categoryCardText[elementCategoryIndex])
             removeSelectionStylesFromPreviousCard(categoryCardText, categoryCardText[elementCategoryIndex])
 
-            let resposeProductList;
-            if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
-            else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
+            renderProductSkeletons(productsList)
 
-            showProducts(resposeProductList.products)
+            try{
+
+                let resposeProductList;
+                if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
+                else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
+                productsList.innerHTML = ""
+                showProducts(resposeProductList.products)
+
+            }catch(error){
+                console.log(error)
+            }
 
         })
     })
@@ -52,32 +62,40 @@ function getClickedCategoryName(categories, categoryCardText) {
 }
 
 async function showCategoryList() {
+    renderCategorySkeleton(carouselTrack)
+    renderCategoryControlSkeleton(categorieControl)
+    try {
 
-    const arrayCategoryList = await getProductCategoryList(BASE_API, '/products/category-list')
+        const arrayCategoryList = await getProductCategoryList(BASE_API, '/products/category-list')
+        carouselTrack.innerHTML = ""
+        arrayCategoryList.forEach(category => {
+            carouselTrack.appendChild(templateCategoryCard(`assets/icons/category/${category}.svg`, category))
+        });
 
-    arrayCategoryList.forEach(category => {
-        carouselTrack.appendChild(templateCategoryCard(`assets/icons/category/${category}.svg`, category))
-    });
+        const categoriesItem = document.querySelector(".categories__item")
+        const categoriesItems = document.querySelectorAll(".categories__item")
 
-    const categoriesItem = document.querySelector(".categories__item")
-    const categoriesItems = document.querySelectorAll(".categories__item")
+        const categoryCardGap = 16
+        const sizeOfCategoryCards = categoriesItem.clientWidth + categoryCardGap
+        const numberOfCardsByCategory = categoriesItems.length
+        categorieControl.innerHTML = ""
+        initializeCarousel(numberOfCardsByCategory, sizeOfCategoryCards)
 
-    const categoryCardGap = 16
-    const sizeOfCategoryCards = categoriesItem.clientWidth + categoryCardGap
-    const numberOfCardsByCategory = categoriesItems.length
+        const categoryCardText = document.querySelectorAll(".categories__item figcaption")
+        const categoryCardImage = document.querySelectorAll(".categories__item img")
 
-    initializeCarousel(numberOfCardsByCategory, sizeOfCategoryCards)
+        getClickedCategoryName(categoryCardText,categoryCardText)
+        getClickedCategoryName(categoryCardImage, categoryCardText)
 
-    const categoryCardText = document.querySelectorAll(".categories__item figcaption")
-    const categoryCardImage = document.querySelectorAll(".categories__item img")
+    } catch (error) {
+        console.log(error)
+    }
 
-    getClickedCategoryName(categoryCardText,categoryCardText)
-    getClickedCategoryName(categoryCardImage, categoryCardText)
 
 }
 
-export async function renderCategories() {
+export function renderCategories() {
 
-    await showCategoryList()
+    showCategoryList()
 
 }
