@@ -13,7 +13,7 @@ export function templateProductCard({
 
     const elemProductImage = document.createElement('img');
     elemProductImage.src = productImage;
-    elemProductImage.alt = 'Producto Blossom Pouch';
+    elemProductImage.alt = `${productTitle}`;
     elemProductImage.loading = "lazy"
     productImageBox.appendChild(elemProductImage);
 
@@ -59,7 +59,7 @@ export function templateProductCard({
     button.appendChild(svg); */
 
     const buttonText = document.createElement('p');
-    buttonText.textContent = 'Agregar al carrito';
+    buttonText.textContent = 'Add to Bag';
 
     button.appendChild(containerSvg)
     button.appendChild(buttonText);
