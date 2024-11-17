@@ -22,10 +22,10 @@ export function setupHeaderFilter() {
         try{
 
             let resposeProductList;
-            if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
+            if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products')
             else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
-
-            const filteredProducts = filterProductNames(resposeProductList.products, event.target.value)
+            console.log(resposeProductList)
+            const filteredProducts = filterProductNames(resposeProductList, event.target.value)
 
             const productsList = document.querySelector(".products__list")
             productsList.innerHTML = ""

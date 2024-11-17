@@ -50,7 +50,7 @@ function getClickedCategoryName(categories, categoryCardText) {
                 if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
                 else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
                 productsList.innerHTML = ""
-                showProducts(resposeProductList.products)
+                showProducts(resposeProductList)
 
             }catch(error){
                 console.log(error)
