@@ -1,16 +1,16 @@
-export function templateCategoryCard(imgCategory, nameCategory ) {
+export function templateCategoryCard( category:string): HTMLElement {
 
     const cardCategory = document.createElement("figure")
     cardCategory.classList.add("categories__item")
 
     const elementImg = document.createElement("img")
-    elementImg.src = imgCategory
-    elementImg.alt = nameCategory
-    elementImg.dataset.category = nameCategory
+    elementImg.src = `assets/icons/category/${category}.svg`
+    elementImg.alt = category
+    elementImg.dataset.category = category
 
     const elementDescription = document.createElement("figcaption")
-    elementDescription.textContent = nameCategory
-    elementDescription.dataset.category = nameCategory
+    elementDescription.textContent = category
+    elementDescription.dataset.category = category
 
     cardCategory.appendChild(elementImg)
     cardCategory.appendChild(elementDescription)

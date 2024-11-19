@@ -1,4 +1,4 @@
-export function renderCategorySkeleton(containerList,count = 7) {
+export function renderCategorySkeleton(containerList: HTMLElement,count = 7) {
 
     for (let i = 0; i < count; i++) {
         const category = document.createElement('categories__item');
@@ -9,7 +9,7 @@ export function renderCategorySkeleton(containerList,count = 7) {
 
 }
 
-export function renderCategoryControlSkeleton(containerControl) {
+export function renderCategoryControlSkeleton(containerControl: HTMLElement) {
 
     const containerCategory = document.createElement("div")
     containerCategory.classList.add("control-skeleton")

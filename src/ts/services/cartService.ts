@@ -1,29 +1,29 @@
-let cart = [];
+import { ProductInCart } from "../models/cart.interface";
 
-function filterExistingProducts(newproduct) {
+let cart: ProductInCart[] = [];
+
+function filterExistingProducts(newproduct: ProductInCart) {
 
     return cart.find((product)=>product.id == newproduct.id)
 
 }
 
-function addToCart(product) {
+function addToCart(product: ProductInCart) {
 
     cart.push(product);
     getCartCount()
 
 }
 
-function getCartCount() {
-
+function getCartCount(): number {
     return cart.length;
-
 }
 
 function updateCartCount() {
 
     const counterValue = document.querySelector(".header__counter")
     if (counterValue) {
-        counterValue.textContent = getCartCount();
+        counterValue.textContent = `${getCartCount()}`;
     }
 
 }

@@ -1,4 +1,4 @@
-export function nameFilterErrorTemplate() {
+export function nameFilterErrorTemplate(): HTMLDivElement {
 
     const containerMessageError = document.createElement("div")
     containerMessageError.classList.add("product-searchError")

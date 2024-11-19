@@ -1,10 +1,9 @@
-export function templateProductCard({
-    id,
-    productTitle,
-    productImage,
-    availabilityStatus,
-    productPrice
-}){
+import { MappedProduct } from "../models/product.interface";
+
+export function templateProductCard(productList:MappedProduct): HTMLElement{
+
+    const { id, productTitle, productImage, availabilityStatus, productPrice} = productList
+
     const product = document.createElement('article');
     product.classList.add('products__item');
 
@@ -37,7 +36,7 @@ export function templateProductCard({
 
     const button = document.createElement('button');
     button.classList.add('products__add-to-cart');
-    button.dataset.idproduct = id
+    button.dataset.idproduct = `${id}`
     const containerSvg = document.createElement('figure');
     containerSvg.classList.add('products__cart');
 
