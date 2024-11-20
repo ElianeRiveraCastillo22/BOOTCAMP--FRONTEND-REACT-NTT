@@ -1,4 +1,5 @@
-let cart = [];
+// si no se le reasignará ningún valor se debe inicialiar con const
+const cart = [];
 
 function filterExistingProducts(newproduct) {
 

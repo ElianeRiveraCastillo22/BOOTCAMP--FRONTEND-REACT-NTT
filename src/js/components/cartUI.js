@@ -1,3 +1,4 @@
+// que objetivo tiene esta función?
 export function initializeCartIcon() {
 
     const cartCountElement = document.querySelector('.header__cart');

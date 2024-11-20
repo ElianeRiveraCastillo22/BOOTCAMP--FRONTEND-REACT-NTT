@@ -11,8 +11,11 @@ const categorieControl = document.querySelector(".categorie__control")
 
 function addSelectionStylesToCategoryCard(activeCategory) {
 
-    if(!activeCategory.classList.value) activeCategory.classList.add("categories__item--selected")
-    else {
+    // usemos la sintaxis larga para mayor legibilidad
+    if(!activeCategory.classList.value) { 
+        activeCategory.classList.add("categories__item--selected")
+    } else {
+        // un poco extraño guardar en el storage el path de un endpoint, por otro lado usemos constantes para definir palabras claves.
         sessionStorage.setItem("lastAPICalled", `/products`)
         activeCategory.classList.remove("categories__item--selected")
     }
@@ -47,6 +50,7 @@ function getClickedCategoryName(categories, categoryCardText) {
             try{
 
                 let resposeProductList;
+                // usemos una sintaxis clásica es complicado de leer
                 if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products?skip=20')
                 else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
                 productsList.innerHTML = ""

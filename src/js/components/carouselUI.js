@@ -41,6 +41,7 @@ function moveCarousel(dotsControl, dotIndex, sizeOfCategoryCards, numberOfCardsB
 
 }
 
+// por que no agregar el export aqui en lugar de la linea 59?
 function initializeCarousel(numberOfCardsByCategory,sizeOfCategoryCards ) {
 
     createCarouselPoints(sizeOfCategoryCards, numberOfCardsByCategory)
@@ -55,7 +56,5 @@ function initializeCarousel(numberOfCardsByCategory,sizeOfCategoryCards ) {
 
 }
 
-export{
-    initializeCarousel
-}
+export { initializeCarousel }
 

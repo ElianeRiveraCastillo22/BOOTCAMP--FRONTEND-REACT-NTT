@@ -1,3 +1,4 @@
+// las llamadas a apis podrían realizarse en otro archivo que puede llamarse pages/pagina1, pages/pagina2, etc para evitar tener tanta lógica en el componente
 import { BASE_API, getAllProducts, getCategoryProducts } from "../services/api.js";
 import { filterProductNames } from "../services/productService.js";
 import { nameFilterErrorTemplate } from "../template/nameFilterErrorTemplate.js";
@@ -22,6 +23,7 @@ export function setupHeaderFilter() {
         try{
 
             let resposeProductList;
+            // sintaxis larga
             if(sessionStorage.getItem("lastAPICalled") == "/products") resposeProductList = await getAllProducts(BASE_API, '/products')
             else resposeProductList = await getCategoryProducts(BASE_API, sessionStorage.getItem("lastAPICalled") )
             console.log(resposeProductList)
