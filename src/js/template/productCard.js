@@ -47,17 +47,6 @@ export function templateProductCard({
 
     containerSvg.appendChild(iconBag)
 
-    // pregunta
-/*  const svg = document.createElement('svg');
-    svg.classList.add('products_iconCart');
-    svg.setAttribute('width', '24');
-    svg.setAttribute('height', '24');
-
-    const use = document.createElement('use');
-    use.setAttribute('xlink:href', `../../../assets/icons/bag.svg#icon-cart`);
-    svg.appendChild(use);
-    button.appendChild(svg); */
-
     const buttonText = document.createElement('p');
     buttonText.textContent = 'Add to cart';
 
