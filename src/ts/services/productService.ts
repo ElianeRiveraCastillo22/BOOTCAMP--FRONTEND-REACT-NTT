@@ -1,19 +1,15 @@
 import { MappedProduct } from "../models/product.interface";
 
+// siguiendo la misma lógica que me explicaste considerar tenerlo así 
+export function filterProductNames(products: MappedProduct[], inputText: string): MappedProduct[] {
+  if (!inputText.trim()) {
+    return products;
+  }
 
-export function filterProductNames(products:MappedProduct[], inputText: string): MappedProduct[]  {
+  const inputLowerCase = inputText.toLowerCase();
 
-    const matchingProducts: MappedProduct[] = products.filter((product)=>{
-
-        const words = product.productTitle.split(' ');
-        const matchingTexts: string[] | []=  words.filter((text)=>{
-            return text.toLowerCase().slice(0,inputText.length) == inputText.toLowerCase()
-        })
-
-        return matchingTexts.length > 0
-
-    })
-
-    return matchingProducts
-
+  return products.filter((product) => {
+    const titleLowerCase = product.productTitle.toLowerCase().split(" ");
+    return titleLowerCase.some((word) => word.startsWith(inputLowerCase));
+  });
 }
