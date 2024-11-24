@@ -1,0 +1,20 @@
+.product-searchError__figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-searchError__message {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--color-Primary);
+}
+@media (width >=768px) {
+
+    .product-searchError {
+        display: flex;
+        max-width: 28.75rem;
+        align-items: center;
+    }
+
+}

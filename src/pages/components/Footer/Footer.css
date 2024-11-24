@@ -1,0 +1,105 @@
+.footer {
+    width: 100%;
+    background: var(--color-Primary);
+    padding: 2.25rem 1.25rem 3.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.footer__section {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+.footer__title{
+    font-weight: 500;
+    color: var(--color-Bright);
+    font-size: clamp(0.875rem, 0.786rem + 0.238vw, 1rem);
+}
+.footer__list {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+.footer__list li a {
+    color: var(--color-Light-Text);
+    display: flex;
+    width: max-content;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: clamp(0.875rem, 0.786rem + 0.238vw, 1rem);
+}
+.footer__list li a::after {
+    color: var(--color-Light-Text);
+    content: " | ";
+    padding: 0px 0px 0px 10px;
+}
+.footer__list li:last-child a::after{
+    color: var(--color-Light-Text);
+    content: "";
+    padding: 0px 0px 0px 10px;
+}
+.footer__social-list {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+}
+.footer__social-item img{
+    cursor: pointer;
+}
+.footer__address {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    gap: 1rem;
+}
+.footer hr {
+    width: 100%;
+    height: .0313rem;
+    background: var(--color-Light-Text);
+}
+.footer__address-text{
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    color: var(--color-Accent);
+    font-weight: 500;
+    font-size: clamp(0.875rem, 0.786rem + 0.238vw, 1rem);
+}
+.footer__copyright{
+    color: var(--color-Accent);
+    font-size: .875rem;
+}
+.footer__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (width >=768px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2.25rem 2.25rem 3.25rem 2.25rem;
+    }
+    .footer hr {
+        display: none;
+    }
+    .footer__list {
+        flex-direction: column;
+    }
+    .footer__list li a::after {
+        content: "";
+        padding: 0px;
+    }
+    .footer__info {
+        flex-direction: row;
+        gap: 5.5rem
+    }
+    .footer__social-list {
+        justify-content: space-around;
+    }
+    .footer__address {
+        padding-bottom: 1.5rem;
+        justify-content: flex-end;
+    }
+}
