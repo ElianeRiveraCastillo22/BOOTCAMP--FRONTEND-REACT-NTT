@@ -5,7 +5,7 @@ SHOP
 SHOP es tu tienda en línea todo-en-uno, donde encontrarás una amplia variedad de productos, desde artículos de tecnología, moda, hogar y más. Nos enorgullece ofrecer una experiencia de compra cómoda, rápida y segura. En SHOP, creemos que la variedad es la clave, por eso tenemos de todo.
 </p>
 <div align="center">
-    <img  width="400" src="assets/logos/logo-shop-main.svg">
+    <img  width="400" src="src/assets/logos/logo-shop-main.svg">
 </div>
 
 ## Índice
