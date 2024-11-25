@@ -1,42 +1,52 @@
 import { useEffect, useState } from "react";
-import { useFilterContext } from "../../../../context/filters/Usefilters.context";
 import { MappedProduct } from "../../../../models/product.model";
+import { FilterError } from "./components/FilterError/FilterError";
 import "./ProductSection.css";
 import { filterProductNames } from "./utils/filterProductNames";
-import { paintProducts } from "./utils/renderProducts";
+import { showProducts } from "./utils/showProducts";
+import { useFilterContext } from "../../../../context";
 
-type Data<T> = T | null;
-interface Props{
-    dataProducts:Data<MappedProduct[]>
+interface Props {
+    dataProducts: MappedProduct[];
 }
 
-export function ProductSection({dataProducts}:Props) {
-    const {searchByTitle, searchByCategory} = useFilterContext()
-    const [processedData, setProcessedData] = useState<Data<MappedProduct[]>>(null)
+export function ProductSection({ dataProducts }: Props) {
+    const { searchByTitle, searchByCategory } = useFilterContext();
+    const [processedData, setProcessedData] = useState<MappedProduct[]>([]);
 
     useEffect(() => {
 
-        const filteredData = filterProductNames(dataProducts, searchByTitle);
-        setProcessedData(filteredData)
+        let filteredData = filterProductNames(dataProducts, searchByTitle);
 
-    }, [searchByTitle]);
-
-    useEffect(()=>{
-
-        const filteredProductsByCategory = dataProducts?.filter(product => product.category === searchByCategory)
-        if(filteredProductsByCategory){
-            console.log("pasa")
-            setProcessedData(filteredProductsByCategory)
-            console.log(processedData)
+        function filterByNameFromCategoryProducts(){
+            if (searchByCategory && searchByCategory !== "AllProducts") {
+                filteredData = filteredData.filter(
+                    (product) => product.category === searchByCategory
+                );
+            }
         }
+        filterByNameFromCategoryProducts()
 
-    },[searchByCategory])
+        setProcessedData(filteredData);
+    }, [dataProducts, searchByTitle, searchByCategory]);
 
-
+    if (dataProducts.length === 0) {
+        return <p>Cargando Productos...</p>;
+    }
 
     return (
-        <section className={ processedData?.length === 0 ? "products__list--error" : "products__list" }>
-            {paintProducts(processedData, dataProducts)}
+        <section
+            className={
+                processedData.length === 0
+                    ? "products__list--error"
+                    : "products__list"
+            }
+        >
+            {
+                processedData.length > 0
+                ? showProducts(processedData)
+                : <FilterError />
+            }
         </section>
     );
 }

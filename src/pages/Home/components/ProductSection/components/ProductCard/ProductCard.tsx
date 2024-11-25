@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useRef } from "react";
-import { useShoppingCartContext } from "../../../../../../context/UseShoppingCart.context";
+import { ReactNode } from "react";
 import { AppActions } from "../../../../../../models/app-store.model";
 import { MappedProduct } from "../../../../../../models/product.model";
-import { useFilterContext } from "../../../../../../context/filters/Usefilters.context";
+import { useShoppingCartContext } from "../../../../../../context";
+
 
 interface ProductCardProps {
     product: MappedProduct;
@@ -10,17 +10,14 @@ interface ProductCardProps {
 
 export const ProductCard = ({product}: ProductCardProps): ReactNode =>  {
 
-    const productRef = useRef<HTMLDivElement>(null)
-
     const { dispatchStateCart} = useShoppingCartContext();
 
     const addProduct = () => {
-        const idproduct = Number(productRef.current?.dataset.idproduct)
-        dispatchStateCart({ type: AppActions.ADD_PRODUCT, payload: { id: idproduct, quantity: 1 } });
+        dispatchStateCart({ type: AppActions.ADD_PRODUCT, payload: { product: product, quantity: 1 } });
     };
 
     return (
-        <article className="products__item" data-idproduct={product.id} ref={productRef}>
+        <article className="products__item" data-idproduct={product.id}>
             <figure className="products__image">
                 <img src={product.image} alt={product.title} loading="lazy"/>
             </figure>

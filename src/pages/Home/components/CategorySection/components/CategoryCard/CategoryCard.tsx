@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef } from "react";
-import { useFilterContext } from "../../../../../../context/filters/Usefilters.context";
 import "./CategoryCard.css";
 import { updateCategoryCardStyle } from "./modules/updateCategoryCardStyle";
+import { useFilterContext } from "../../../../../../context";
 
 interface CategoryCardProps {
     category: string;
@@ -13,22 +13,33 @@ export const CategoryCard = ({ category, setCardCategory, firstCategoryRef }: Ca
 
     const refCardCatecory = useRef<HTMLElement>(null);
     const refNameCategory = useRef<HTMLElement>(null);
-    const { setSearchByCategory} = useFilterContext()
+
+    const {searchByCategory, setSearchByCategory } = useFilterContext()
 
     useEffect(() => {
+
         if (firstCategoryRef?.current) {
             setCardCategory(firstCategoryRef.current);
         }
+
     }, [firstCategoryRef]);
 
     function handleClick() {
         const category = refNameCategory.current?.dataset.category;
 
-        if (category) {
-            setSearchByCategory(category);
+        function updateProductRequestType(){
+            if (category) {
+                if(refNameCategory.current?.classList.contains("categories__item--selected")){
+                    setSearchByCategory("AllProducts");
+                }else{
+                    setSearchByCategory(category);
+                }
+            }
         }
 
+        updateProductRequestType()
         updateCategoryCardStyle(refNameCategory);
+
     }
 
     return (

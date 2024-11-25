@@ -15,8 +15,10 @@ export function updateCategoryCardStyle(
                 selectedPoint.classList.remove("categories__item--selected");
             } else {
                 selectedPoint.classList.remove("categories__item--selected");
+
             }
         } else {
+
             refNameCategory.current?.classList.add("categories__item--selected");
         }
     }

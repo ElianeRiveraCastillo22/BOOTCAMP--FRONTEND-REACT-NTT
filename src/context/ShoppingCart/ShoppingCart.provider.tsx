@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useReducer } from "react"
-import { CartState } from "../models/cart.interface"
-import { AppReducer, initialCarValue } from "./ShoppingCart.reduce"
-import { AppDispatchObject } from "../models/app-store.model";
+import { CartState } from "../../models/cart.interface"
+import { AppDispatchObject } from "../../models/app-store.model";
+import { AppReducer, initialCarValue } from "./ShoppingCart.reduce";
 
 interface Props{
     children: ReactNode

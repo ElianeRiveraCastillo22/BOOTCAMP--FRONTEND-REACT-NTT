@@ -1,15 +1,13 @@
 import { MappedProduct } from "../../../../../models/product.model";
-type Data<T> = T | null;
 
-export function filterProductNames(dataProducts: Data<MappedProduct[]>, searchByTitle: string): Data<MappedProduct[]> {
+export function filterProductNames(dataProducts: MappedProduct[] , searchByTitle: string): MappedProduct[] {
 
-
-    if (!dataProducts){
-        return null
+    if (!dataProducts) {
+        return [];
     }
 
     if (!searchByTitle.trim()) {
-        return dataProducts
+        return dataProducts;
     }
 
     const inputLowerCase = searchByTitle.toLowerCase();
@@ -18,5 +16,4 @@ export function filterProductNames(dataProducts: Data<MappedProduct[]>, searchBy
         const titleLowerCase = product.title.toLowerCase().split(" ");
         return titleLowerCase.some((word) => word.startsWith(inputLowerCase));
     });
-
 }

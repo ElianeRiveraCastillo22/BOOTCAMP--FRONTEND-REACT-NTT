@@ -1,19 +1,15 @@
-import { ReactNode } from 'react'
 import './App.css'
-import { Footer } from './pages/components/Footer/Footer'
-import { Navbar } from './pages/components/Navbar/Navbar'
+import { AppRouter } from './AppRouter'
+import { FilterProvider } from './context/filters/filters.provider'
+import { ShoppingCartProvider } from './context/ShoppingCart/ShoppingCart.provider'
 
-interface Props {
-  children: ReactNode
+export function App() {
+
+    return (
+        <ShoppingCartProvider>
+            <FilterProvider>
+                <AppRouter />
+            </FilterProvider>
+        </ShoppingCartProvider>
+    )
 }
-
-export function App({children}: Props) {
-  return (
-    <>
-      <Navbar/>
-      {children}
-      <Footer/>
-    </>
-  )
-}
-

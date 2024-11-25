@@ -1,5 +1,7 @@
+import { MappedProduct } from "./product.model";
+
 export interface ProductInCart {
-    id: number;
+    product: MappedProduct;
     quantity: number;
 }
 

@@ -69,6 +69,7 @@
     justify-content: center;
     color: var(--color-Bright);
     font-weight: 600;
+    font-size: clamp(0.875rem, 0.786rem + 0.238vw, 1rem);
 }
 .header__cart-container:hover {
     transform: scale(1.2);

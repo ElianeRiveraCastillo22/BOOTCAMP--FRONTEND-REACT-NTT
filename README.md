@@ -135,7 +135,7 @@ Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
 3. **Cambia de rama:**
 
    ```bash
-   git checkout feature/react-fundamentos
+   git checkout feature/react-implementacion
     ```
 4. **Instala las dependencias usando npm:**
 

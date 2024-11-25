@@ -3,15 +3,6 @@
     flex-direction: row;
     justify-content: space-between;
 }
-/* .categories__item {
-    min-width: 5.375rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    align-items: center;
-} */
-
-/* categoria list*/
 .categories {
     display: flex;
     flex-direction: column;
