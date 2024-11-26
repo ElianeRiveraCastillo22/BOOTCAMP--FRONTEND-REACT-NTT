@@ -10,12 +10,14 @@ import "./Home.css"
 export const Home = () => {
 
     const { searchByCategory } = useFilterContext();
+    // para evitar tener directamente el path del endpoint se puede encapsular en un custom hook que solo retorne el dato y estado de la petici'on
     const { data: dataCategory } = useFetch(() => getProductCategoryList(BASE_API, "/products/category-list"));
     const { data: dataProducts } = useFetch(() => getAllProducts(BASE_API, "/products"));
 
     const [currentData, setCurrentData] = useState<MappedProduct[]>([]);
 
     function hideSearchInput() {
+        // no palabras magicas
         const locactionSummary = "/home";
         if (window.location.pathname === locactionSummary) {
             const inputHeader = document.querySelectorAll(".header__input");
@@ -32,11 +34,13 @@ export const Home = () => {
     useEffect(() => {
         async function fetchData() {
 
+            // no palabras m'agicas
             if (!searchByCategory || searchByCategory === 'AllProducts') {
 
                 setCurrentData(dataProducts ?? []);
             } else {
 
+                // igual aqu'i no usemos el path directamente, solo pasemos el valor que necesita para armar el path final
                 const dataByCategory = await getCategoryProducts(BASE_API, `/products/category/${searchByCategory}`);
                 setCurrentData(dataByCategory);
             }

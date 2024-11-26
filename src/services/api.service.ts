@@ -3,6 +3,7 @@ import { MappedProduct, ProductResponse } from "../models/product.model";
 
 export const BASE_API: string = 'https://dummyjson.com';
 
+// mantengamos un estandar los parametros deber'ian ser camelCase
 async function getProductCategoryList(BASE_API: string, PATH: string): Promise <string[]> {
     try {
 

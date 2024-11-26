@@ -1,3 +1,4 @@
+// el nombre del componente es bastante generico pero se usa 'unicamente en category section que es m'as espec'ifico 
 import { ReactNode, useEffect, useRef } from "react";
 import { moveCarousel, updateSelectedDot } from "./modules/carousel";
 import "./CarouselControl.css";
