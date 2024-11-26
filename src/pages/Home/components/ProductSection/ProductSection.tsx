@@ -15,19 +15,19 @@ export function ProductSection({ dataProducts }: Props) {
     const [processedData, setProcessedData] = useState<MappedProduct[]>([]);
 
     useEffect(() => {
-
-        let filteredData = filterProductNames(dataProducts, searchByTitle);
-
-        function filterByNameFromCategoryProducts(){
+        function filterByNameFromCategoryProducts(): MappedProduct[]{
+            const filteredData = filterProductNames(dataProducts, searchByTitle);
+            // palabras m'agicas en enum
             if (searchByCategory && searchByCategory !== "AllProducts") {
-                filteredData = filteredData.filter(
+                return filteredData.filter(
                     (product) => product.category === searchByCategory
                 );
             }
-        }
-        filterByNameFromCategoryProducts()
 
-        setProcessedData(filteredData);
+            return filteredData;
+        }
+
+        setProcessedData(filterByNameFromCategoryProducts());
     }, [dataProducts, searchByTitle, searchByCategory]);
 
     if (dataProducts.length === 0) {

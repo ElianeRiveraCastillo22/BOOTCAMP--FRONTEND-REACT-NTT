@@ -10,8 +10,10 @@ export function Summary() {
     const { stateCart } = useShoppingCartContext();
 
     function hideSearchInput (){
+        // no usemos texto plano usemos enum
         const locactionSummary = "/resumen"
         if(window.location.pathname == locactionSummary){
+            // no manipulemos directamente el html no es una buena pr'actica por que no usar estilos condicionados?
             const inputHeader = document.querySelectorAll(".header__input")
             inputHeader.forEach((input)=>{
                 input.classList.add("header__input--hideSummar")

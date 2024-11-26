@@ -1,6 +1,8 @@
+// useEffect no se usa
 import { useEffect, useState } from "react";
 import { Select } from "./components/Select/Select"
 import { validateForm } from "./utils/validateForm";
+// navigate no se usa
 import { Navigate, useNavigate } from "react-router";
 import { ModuleRoutes } from "../../../routes";
 
@@ -23,6 +25,7 @@ export const initalPatient: valuesForm = {
 };
 
 export const OrderForm = () =>{
+    // patient?
     const [dataForm, setDataForm] = useState<valuesForm>(initalPatient)
     const [errors, setErrors] = useState<Partial<valuesForm>>({});
 

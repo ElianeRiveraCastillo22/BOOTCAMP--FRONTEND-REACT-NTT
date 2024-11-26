@@ -1,3 +1,4 @@
+// eliminar importaciones que no se usa
 import { useEffect, useRef } from "react"
 import { Usedistricts } from "../../../../../../Hooks/Usedistricts"
 import { valuesForm } from "../../OrderForm"
@@ -14,6 +15,7 @@ export const Select = ({setDataForm}:Prop) => {
     const refLabel = useRef<HTMLParagraphElement>(null)
 
     function openSelect(){
+        // no manipular directamente el html
         if(useDropDown.current?.classList.contains("cart-page__dropdown--close")){
             useDropDown.current?.classList.remove("cart-page__dropdown--close")
         }else{

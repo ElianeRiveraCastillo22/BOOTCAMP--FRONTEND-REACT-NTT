@@ -26,6 +26,8 @@ function calculateLastSectionShiftSize(config: CarouselConfig) {
 
     if(visibleCarouselSize){
 
+        // ingl'es y espa;ol al mismo tiempo
+        // valores fijos deben estar afuera ya que no cambian y no necesitan volver a regenerarse
         const  alignedIndex= 1
         const indexForAntepenultimatePoint = 1
         const antepenultimateSectionCardsWidth = (calculateNumberOfCarouselPoints(config)-alignedIndex-indexForAntepenultimatePoint)*visibleCarouselSize;
