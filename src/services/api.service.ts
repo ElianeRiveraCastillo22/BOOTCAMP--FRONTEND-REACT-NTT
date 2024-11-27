@@ -1,12 +1,12 @@
 import { productMapper } from "../mappers/product.mapper";
 import { MappedProduct, ProductResponse } from "../models/product.model";
 
-export const BASE_API: string = 'https://dummyjson.com';
 
-async function getProductCategoryList(BASE_API: string, PATH: string): Promise <string[]> {
+async function getProductCategoryList(): Promise <string[]> {
     try {
+        const url = `${import.meta.env.VITE_BASE_API}/products/category-list`
 
-        const response = await fetch(BASE_API + PATH);
+        const response = await fetch(url);
         if (!response.ok) throw new Error(`Fallo al buscar  la lista de categorías: ${response.statusText}`);
 
         const data: string[]= await response.json();
@@ -21,10 +21,12 @@ async function getProductCategoryList(BASE_API: string, PATH: string): Promise <
 
 }
 
-async function getAllProducts(BASE_API: string, PATH: string): Promise<MappedProduct[]> {
+async function getAllProducts(): Promise<MappedProduct[]> {
     try {
 
-        const response = await fetch(BASE_API + PATH);
+        const url = `${import.meta.env.VITE_BASE_API}/products`
+
+        const response = await fetch(url);
         if (!response.ok) throw new Error(`Fallo al buscar productos: ${response.statusText}`);
 
         const data: ProductResponse = await response.json();
@@ -38,10 +40,12 @@ async function getAllProducts(BASE_API: string, PATH: string): Promise<MappedPro
     }
 }
 
-async function getCategoryProducts(BASE_API: string, PATH: string): Promise<MappedProduct[]> {
+async function getCategoryProducts(category: string): Promise<MappedProduct[]> {
     try{
 
-        const response = await fetch(BASE_API + PATH);
+        const url = `${import.meta.env.VITE_BASE_API}/products/category/${category}`
+
+        const response = await fetch(url);
         if(!response.ok) throw new Error(`Fallo al buscar los produtos de la categoría: ${response.statusText}`)
 
         const data: ProductResponse = await response.json()

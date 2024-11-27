@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
-import { MappedProduct } from "../../../../models/product.model";
-import { FilterError } from "./components/FilterError/FilterError";
-import "./ProductSection.css";
-import { filterProductNames } from "./utils/filterProductNames";
-import { showProducts } from "./utils/showProducts";
 import { useFilterContext } from "../../../../context";
+import { MappedProduct } from "../../../../models/product.model";
+import { ProductSkeleton } from "./components/ProductSkeleton/ProductSkeleton";
+import { filterProductNames } from "./modules/filterProductNames";
+import { showProducts } from "./modules/showProducts";
+import "./ProductSection.css";
 
 interface Props {
     dataProducts: MappedProduct[];
+    loadingDataProducts: boolean
 }
 
-export function ProductSection({ dataProducts }: Props) {
+export function ProductSection({ dataProducts, loadingDataProducts }: Props) {
+
     const { searchByTitle, searchByCategory } = useFilterContext();
     const [processedData, setProcessedData] = useState<MappedProduct[]>([]);
 
     useEffect(() => {
 
         let filteredData = filterProductNames(dataProducts, searchByTitle);
-
-        function filterByNameFromCategoryProducts(){
-            if (searchByCategory && searchByCategory !== "AllProducts") {
-                filteredData = filteredData.filter(
-                    (product) => product.category === searchByCategory
-                );
-            }
-        }
-        filterByNameFromCategoryProducts()
-
         setProcessedData(filteredData);
+
     }, [dataProducts, searchByTitle, searchByCategory]);
 
-    if (dataProducts.length === 0) {
-        return <p>Cargando Productos...</p>;
+    if (loadingDataProducts) {
+        return (
+            <section className="products__list">
+                {
+                    Array.from({ length: 8 }).map((_, index) => (
+                        <ProductSkeleton key={index}/>
+                    ))
+                }
+            </section>
+        )
     }
 
     return (
@@ -43,9 +44,7 @@ export function ProductSection({ dataProducts }: Props) {
             }
         >
             {
-                processedData.length > 0
-                ? showProducts(processedData)
-                : <FilterError />
+                showProducts(processedData)
             }
         </section>
     );

@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from "react";
 import { moveCarousel, updateSelectedDot } from "./modules/carousel";
-import "./CarouselControl.css";
+import "./HorizontalCarouselControl.css";
 
 interface Props {
     lastSectionShiftSize: number;
@@ -9,7 +9,7 @@ interface Props {
     position: number;
 }
 
-export const CarouselControl = ({ lastSectionShiftSize, carouselTrack, pointNumber, position }: Props): ReactNode => {
+export const HorizontalCarouselControl = ({ lastSectionShiftSize, carouselTrack, pointNumber, position }: Props): ReactNode => {
     const refPoint = useRef<HTMLDivElement>(null);
 
     useEffect(() => {

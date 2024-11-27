@@ -1,6 +1,4 @@
-.header__input--hideSummar{
-    display: none;
-}
+
 .cart-page__title, .cart-page__shipping-title{
     font-size: clamp(1.25rem, 0.625rem + 1.667vw, 2.125rem);
     color: var(--color-Primary);

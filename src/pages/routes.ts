@@ -1,6 +1,6 @@
 export enum ModuleRoutes {
     Init=  "/",
-    Home = "home",
+    Home = "/home",
     Login = "/iniciar-sesion",
     Summary = "/resumen",
     Register = "/register",

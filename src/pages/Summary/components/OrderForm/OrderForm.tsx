@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Select } from "./components/Select/Select"
-import { validateForm } from "./utils/validateForm";
-import { Navigate, useNavigate } from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { ModuleRoutes } from "../../../routes";
+import { Select } from "./components/Select/Select";
+import { validateForm } from "./modules/validateForm";
 
 export interface valuesForm {
     name: string,
@@ -13,7 +13,7 @@ export interface valuesForm {
     phone: string,
 }
 
-export const initalPatient: valuesForm = {
+export const initialForm: valuesForm = {
     name: "",
     lastName: "",
     district: "",
@@ -23,7 +23,7 @@ export const initalPatient: valuesForm = {
 };
 
 export const OrderForm = () =>{
-    const [dataForm, setDataForm] = useState<valuesForm>(initalPatient)
+    const [dataForm, setDataForm] = useState<valuesForm>(initialForm)
     const [errors, setErrors] = useState<Partial<valuesForm>>({});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,11 +33,11 @@ export const OrderForm = () =>{
 
     const navigate = useNavigate();
 
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm({dataForm, setErrors})) {
           alert('Tu pedido se registró con éxito 🙌');
+          setErrors(initialForm)
           navigate(ModuleRoutes.Init)
         }
     };
@@ -110,7 +110,7 @@ export const OrderForm = () =>{
                     />
                     {errors.phone && <span>{errors.phone}</span>}
                 </div>
-                <button className="cart-page__button cart-page__button--submit" onClick ={handleSubmit}>Comprar</button>
+                <button className="cart-page__button cart-page__button--submit" onClick={handleSubmit}>Comprar</button>
             </form>
         </section>
     )

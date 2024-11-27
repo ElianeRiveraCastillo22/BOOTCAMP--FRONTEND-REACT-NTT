@@ -1,4 +1,6 @@
 const categoryCardGap = 16
+const alignedIndex= 1
+const indexForAntepenultimatePoint = 1
 
 export interface CarouselConfig {
     sizeOfCategoryCards: number;
@@ -12,10 +14,10 @@ function calculateNumberOfCarouselPoints(config: CarouselConfig) {
 
     if(visibleCarouselSize){
         const cardsThatFitTheScreen = visibleCarouselSize / (sizeOfCategoryCards)
-        const numberOfCarouselPoints = Math.ceil(numberOfCardsByCategory/cardsThatFitTheScreen)
+        const numberOfCarouselPoints = Math.ceil(numberOfCardsByCategory / cardsThatFitTheScreen)
         return numberOfCarouselPoints
     }else{
-        throw new Error("No se pudo calcular el de puntos de carrusel")
+        throw new Error("The number of carousel points could not be calculated.")
     }
 
 }
@@ -26,8 +28,6 @@ function calculateLastSectionShiftSize(config: CarouselConfig) {
 
     if(visibleCarouselSize){
 
-        const  alignedIndex= 1
-        const indexForAntepenultimatePoint = 1
         const antepenultimateSectionCardsWidth = (calculateNumberOfCarouselPoints(config)-alignedIndex-indexForAntepenultimatePoint)*visibleCarouselSize;
         const trackSize = numberOfCardsByCategory*sizeOfCategoryCards
         const trackused = (calculateNumberOfCarouselPoints(config)-alignedIndex)*(visibleCarouselSize)
@@ -35,7 +35,7 @@ function calculateLastSectionShiftSize(config: CarouselConfig) {
         return (antepenultimateSectionCardsWidth+ lastSectionCardsWidth)-categoryCardGap
 
     }else{
-        throw new Error("No se pudo calcular el tamaño del desplazamiento de la última sección")
+        throw new Error("The displacement size of the last section could not be calculated.")
     }
 
 }

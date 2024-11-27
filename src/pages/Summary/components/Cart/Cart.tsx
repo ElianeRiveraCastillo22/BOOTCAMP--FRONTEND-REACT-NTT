@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { CartProducts } from "./componets/CartProducts/CartProducts";
 import { useShoppingCartContext } from "../../../../context";
+import { CartProducts } from "./componets/CartProducts/CartProducts";
 
 export const Cart = ()=>{
 

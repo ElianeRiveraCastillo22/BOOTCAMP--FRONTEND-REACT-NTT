@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
+import { useShoppingCartContext } from "../../../../../../context"
 import { AppActions } from "../../../../../../models/app-store.model"
 import { ProductInCart } from "../../../../../../models/cart.interface"
-import { useShoppingCartContext } from "../../../../../../context"
 
 interface Props{
     dataProduct: ProductInCart
