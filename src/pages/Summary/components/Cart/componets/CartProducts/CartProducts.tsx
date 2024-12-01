@@ -1,21 +1,23 @@
-import { ReactNode } from "react"
-import { useShoppingCartContext } from "../../../../../../context"
-import { AppActions } from "../../../../../../models/app-store.model"
-import { ProductInCart } from "../../../../../../models/cart.interface"
+import { ReactNode } from "react";
+import { useShoppingCartContext } from "../../../../../../context";
+import { AppActions } from "../../../../../../models/app-store.model";
+import { ProductInCart } from "../../../../../../models/cart.interface";
 
-interface Props{
-    dataProduct: ProductInCart
+interface Props {
+    dataProduct: ProductInCart;
 }
 
-export const CartProducts = ({dataProduct}:Props): ReactNode => {
-
-    const {product, quantity} = dataProduct
-    const {id, title, image, category} = product
+export const CartProducts = ({ dataProduct }: Props): ReactNode => {
+    const { product, quantity } = dataProduct;
+    const { id, title, image, category } = product;
 
     const { dispatchStateCart } = useShoppingCartContext();
 
     function incremetProduct() {
-        dispatchStateCart({ type: AppActions.ADD_PRODUCT, payload: { product: product, quantity: 1 } });
+        dispatchStateCart({
+            type: AppActions.ADD_PRODUCT,
+            payload: { product: product, quantity: 1 },
+        });
     }
 
     function decrementProduct() {
@@ -26,7 +28,7 @@ export const CartProducts = ({dataProduct}:Props): ReactNode => {
         dispatchStateCart({ type: AppActions.REMOVE_PRODUCT, payload: id });
     }
 
-    return(
+    return (
         <article className="cart-page__item" id-product={id}>
             <section className="cart-page__item-info">
                 <figure className="cart-page__item-image">
@@ -38,13 +40,28 @@ export const CartProducts = ({dataProduct}:Props): ReactNode => {
                 </div>
             </section>
             <section className="cart-page__item-quantity">
-                <button className="cart-page__button cart-page__button--decrease " onClick={decrementProduct}>-</button>
+                <button
+                    className="cart-page__button cart-page__button--decrease "
+                    onClick={decrementProduct}
+                >
+                    -
+                </button>
                 <span className="cart-page__quantity">{quantity}</span>
-                <button className="cart-page__button cart-page__button--increase" onClick={incremetProduct}>+</button>
+                <button
+                    className="cart-page__button cart-page__button--increase"
+                    onClick={incremetProduct}
+                >
+                    +
+                </button>
             </section>
             <section className="cart-page__item-remove">
-                <button className="cart-page__button cart-page__button--remove" onClick={DeleteProduct}>Eliminar</button>
+                <button
+                    className="cart-page__button cart-page__button--remove"
+                    onClick={DeleteProduct}
+                >
+                    Delate
+                </button>
             </section>
         </article>
-    )
-}
+    );
+};

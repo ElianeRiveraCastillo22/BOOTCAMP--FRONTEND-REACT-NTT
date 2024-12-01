@@ -9,18 +9,23 @@ interface Props {
     position: number;
 }
 
-export const HorizontalCarouselControl = ({ lastSectionShiftSize, carouselTrack, pointNumber, position }: Props): ReactNode => {
+export const HorizontalCarouselControl = ({
+    lastSectionShiftSize,
+    carouselTrack,
+    pointNumber,
+    position,
+}: Props): ReactNode => {
     const refPoint = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (position === 0 && refPoint.current) {
+        if (refPoint.current && position === 2) {
             refPoint.current.classList.add("selectedPoint");
         }
     }, [position]);
 
     const handleClick = () => {
-        if (refPoint.current) {
-            const listDots = document.querySelectorAll(".control__item")
+        if (refPoint.current && carouselTrack.current) {
+            const listDots = document.querySelectorAll(".control__item");
             updateSelectedDot(listDots, refPoint.current, "selectedPoint");
 
             moveCarousel(
@@ -36,6 +41,7 @@ export const HorizontalCarouselControl = ({ lastSectionShiftSize, carouselTrack,
         <div
             className="control__item"
             data-position={position}
+            data-testid={`control-item-${position}`}
             onClick={handleClick}
             ref={refPoint}
         ></div>

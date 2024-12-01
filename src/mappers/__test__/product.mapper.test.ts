@@ -1,11 +1,13 @@
 
 import { productMock } from "../__mock__/Product";
-import { productMapperMock } from "../__mock__/product.mapper";
+import { productStub } from "../__stubs__/product.stub";
 import { productMapper } from "../product.mapper";
 
 describe("productMapper", () => {
     test("Maps a Product to a MappedProduct", () => {
-        const result = productMapper(productMock);
-        expect(result).toEqual(productMapperMock);
+
+        const mappedProductData = productMapper(productMock);
+        expect(mappedProductData).toEqual(productStub);
+
     });
-});
+})

@@ -1,7 +1,9 @@
 export const CategorySkeleton = () => {
     return (
-        <div className="control-skeleton">
-
-        </div>
-    )
-}
+        <div
+            className="control-skeleton"
+            role="status"
+            aria-label="Loading category skeleton"
+        />
+    );
+};

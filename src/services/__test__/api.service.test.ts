@@ -1,36 +1,11 @@
 import { ProductResponse } from "@/models/product.model";
+import { mockFetch } from "@/utils/mockFetch";
 import { mockAllProducts } from "../__mock__/allProducts";
 import { mockCategoryList } from "../__mock__/categoryList";
-import { getAllProducts, getProductCategoryList } from "../api.service";
-import { productMapper } from "@/mappers/product.mapper";
+import { fetchDistricts, getAllProducts, getCategoryProducts, getProductCategoryList } from "../api.service";
+import { productStub } from "@/mappers/__stubs__/product.stub";
 
-const mockFetch = <T>(
-    data: T,
-    status: number = 200,
-    ok: boolean = true
-): jest.Mock => {
-    const fn = jest.fn().mockImplementationOnce(() => {
-        const response = {
-            ok,
-            status,
-            json: () => Promise.resolve(data),
-            blob: () => Promise.resolve(data),
-            clone: () => ({ ...response }),
-            text: () => Promise.resolve(JSON.stringify(data)),
-        };
-        return Promise.resolve(response);
-    });
-
-    global.fetch = fn;
-    return fn;
-};
-
-
-describe("getProductCategoryList", () => {
-
-    beforeAll(() => {
-        jest.spyOn(console, 'error').mockImplementation(() => {});
-    });
+describe("SHOP Services", () => {
 
     beforeEach(() => {
 
@@ -45,146 +20,111 @@ describe("getProductCategoryList", () => {
 
     });
 
-	it("returns a list of categories when the API call is successful", async()=>{
+	it("returns a category list when the API call is successful", async()=>{
 
 		mockFetch<string[]>(mockCategoryList)
 		const dataCategoryList = await getProductCategoryList()
+
+        expect(dataCategoryList).toBeDefined()
 		expect(dataCategoryList).toEqual(mockCategoryList)
 
 	})
 
-	it("returns an empty array if the category list API fails", async()=>{
+	it("throws an error if the category list response is unsuccessful", async()=>{
 
-		mockFetch<[]>([], 500, false);
-		const dataCategoryList = await getProductCategoryList()
-		expect(dataCategoryList).toEqual([])
+        mockFetch<string[]>(mockCategoryList, 404, false);
+
+        try {
+
+            await getProductCategoryList();
+
+        } catch (error) {
+
+            expect(error).toEqual(new Error(`Fallo al buscar  la lista de categorías, status: 404`));
+
+        }
 
 	})
 
-
-    it.each([() => getProductCategoryList()])(
-
-        "fetch error with services",
-
-        async (request) => {
-
-            global.fetch = jest
-
-                .fn()
-                .mockRejectedValueOnce(new Error("Network error"));
-
-            try {
-
-                await request();
-
-            } catch (error) {
-
-                expect(error).toBeDefined();
-                expect(error).toBeInstanceOf(Error);
-
-            }
-        }
-    );
-});
-
-describe("getAllProducts", () => {
-
-    beforeAll(() => {
-        jest.spyOn(console, 'error').mockImplementation(() => {});
-    });
-
-    beforeEach(() => {
-
-        global.fetch = jest.fn();
-
-    });
-
-    afterEach(() => {
-
-        jest.resetModules();
-        global.fetch = fetch;
-
-    });
-
-	it("returns all products when the API call is successful", async()=>{
+	it("returns a product list when the API call is successful", async()=>{
 
 		mockFetch<ProductResponse>(mockAllProducts)
-		const dataProductList = await getAllProducts()
-		expect(dataProductList).toEqual(mockAllProducts.products.map(productMapper))
+		const dataCategoryList = await getAllProducts()
+		expect(dataCategoryList).toEqual([productStub])
 
 	})
 
-	it("returns an empty array if the product list API fails", async()=>{
+	it("should throw an error if the request to fetch the product list is unsuccessful", async()=>{
 
-		mockFetch<[]>([], 500, false);
-		const dataProductList = await getAllProducts()
-		expect(dataProductList).toEqual([])
+        mockFetch<ProductResponse>(mockAllProducts, 404, false);
 
-	})
+        try {
 
+            await getAllProducts();
 
-    it.each([() => getAllProducts()])(
+        } catch (error) {
 
-        "fetch error with services",
+            expect(error).toEqual(new Error(`Fallo al buscar productos, status: 404`));
 
-        async (request) => {
-
-            global.fetch = jest
-
-                .fn()
-                .mockRejectedValueOnce(new Error("Network error"));
-
-            try {
-
-                await request();
-
-            } catch (error) {
-
-                expect(error).toBeDefined();
-                expect(error).toBeInstanceOf(Error);
-
-            }
         }
-    );
-});
 
-describe("getCategoryProducts", () => {
+	})
 
-    beforeAll(() => {
-        jest.spyOn(console, 'error').mockImplementation(() => {});
-    });
-
-    beforeEach(() => {
-
-        global.fetch = jest.fn();
-
-    });
-
-    afterEach(() => {
-
-        jest.resetModules();
-        global.fetch = fetch;
-
-    });
-
-	it("returns all products of a category when the API call is successful", async()=>{
+	it("returns a category list products when the API call is successful", async()=>{
 
 		mockFetch<ProductResponse>(mockAllProducts)
-		const dataProductList = await getAllProducts()
-		expect(dataProductList).toEqual(mockAllProducts.products.map(productMapper))
+		const dataCategoryList = await getCategoryProducts("beauty")
+		expect(dataCategoryList).toEqual([productStub])
 
 	})
 
-	it("returns an empty array if the category products API fails", async()=>{
+	it("should throw an error if the request to fetch the category list products is unsuccessful", async()=>{
 
-		mockFetch<[]>([], 500, false);
-		const dataProductList = await getAllProducts()
-		expect(dataProductList).toEqual([])
+        mockFetch<ProductResponse>(mockAllProducts, 404, false);
+
+        try {
+
+            await getCategoryProducts("beauty");
+
+        } catch (error) {
+
+            expect(error).toEqual(new Error(`Fallo al buscar los produtos de la categoría, status: 404`));
+
+        }
+
+	})
+
+	it("returns a district list when the API call is successful", async()=>{
+
+		mockFetch<string[]>(["Surquillo"])
+		const dataCategoryList = await fetchDistricts()
+		expect(dataCategoryList).toEqual(["Surquillo"])
+
+	})
+
+	it("should throw an error if the request to fetch the district list is unsuccessful", async()=>{
+
+        mockFetch<string[]>(["Surquillo"], 404, false);
+
+        try {
+
+            await fetchDistricts();
+
+        } catch (error) {
+
+            expect(error).toEqual(new Error(`Failed to fetch districts`));
+
+        }
 
 	})
 
 
-    it.each([() => getAllProducts()])(
+    it.each([
+        () => getProductCategoryList(),
+        () => getAllProducts(),
+        () => getCategoryProducts("beauty"),
+        () => getProductCategoryList(),
+    ])(
 
         "fetch error with services",
 
@@ -208,3 +148,5 @@ describe("getCategoryProducts", () => {
         }
     );
 });
+
+

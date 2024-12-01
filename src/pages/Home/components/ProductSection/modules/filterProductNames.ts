@@ -1,7 +1,9 @@
-import { MappedProduct } from "../../../../../models/product.model";
+import { MappedProduct } from "@/models/product.model";
 
-export function filterProductNames(dataProducts: MappedProduct[] , searchByTitle: string): MappedProduct[] {
-
+export function filterProductNames(
+    dataProducts: MappedProduct[] | undefined,
+    searchByTitle: string
+): MappedProduct[] {
     if (!dataProducts) {
         return [];
     }

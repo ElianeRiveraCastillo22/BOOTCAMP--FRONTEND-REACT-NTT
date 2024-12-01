@@ -1,3 +1,10 @@
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem 2.25rem 1.25rem;
+    min-height: 650px;
+}
 
 .cart-page__title, .cart-page__shipping-title{
     font-size: clamp(1.25rem, 0.625rem + 1.667vw, 2.125rem);
@@ -221,6 +228,7 @@ section.cart-page__item-remove button {
         gap: 64px;
         align-items: flex-start;
         justify-content: center;
+        padding: 2.25rem 2.25rem 0px 2.25rem
     }
     .cart-page__shipping {
         padding: 1.25rem 1.25rem 2.25rem 1.25rem;

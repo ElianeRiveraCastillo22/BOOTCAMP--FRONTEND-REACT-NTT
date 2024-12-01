@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 type Data<T> = T | null;
 type ErrorType = Error | null
 
@@ -16,7 +17,7 @@ export const useFetch = <T>(apiCall: () => Promise<Data<T>>): Params<T> => {
     const [error, setError] = useState<ErrorType>(null)
 
     useEffect(() => {
-        let controller = new AbortController()
+
         setLoading(true)
         const fetchData = async () => {
             try{
@@ -30,9 +31,7 @@ export const useFetch = <T>(apiCall: () => Promise<Data<T>>): Params<T> => {
             }
         }
         fetchData()
-        return () =>{
-            controller.abort()
-        }
+
     }, [])
 
     return {data, loading, error}

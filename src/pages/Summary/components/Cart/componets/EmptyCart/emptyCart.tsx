@@ -1,9 +1,9 @@
 export const EmptyCart = () => {
-    return(
+    return (
         <div className="cart-page__notProducts">
             <img src="src/assets/images/noProducts.png"></img>
-            <h3>Oh no!</h3>
-            <p>No has añadido ningún artículo a tu carrito 😓</p>
+            <h3>Oh, no!</h3>
+            <p>You have not added any items to your cart 😓</p>
         </div>
-    )
-}
+    );
+};

@@ -10,41 +10,48 @@ interface CategoryCardProps {
     firstCategoryRef?: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-export const CategoryCard = ({ category, setCardCategory, firstCategoryRef }: CategoryCardProps): ReactNode => {
-
+export const CategoryCard = ({
+    category,
+    setCardCategory,
+    firstCategoryRef,
+}: CategoryCardProps): ReactNode => {
     const refCardCatecory = useRef<HTMLElement>(null);
     const refNameCategory = useRef<HTMLElement>(null);
 
-    const { setSearchByCategory } = useFilterContext()
+    const { setSearchByCategory } = useFilterContext();
 
     useEffect(() => {
-
         if (firstCategoryRef?.current) {
             setCardCategory(firstCategoryRef.current);
         }
-
     }, [firstCategoryRef]);
 
     function handleClick() {
         const category = refNameCategory.current?.dataset.category;
 
-        function updateProductRequestType(){
+        function updateProductRequestType() {
             if (category) {
-                if(refNameCategory.current?.classList.contains("categories__item--selected")){
+                if (
+                    refNameCategory.current?.classList.contains(
+                        "categories__item--selected"
+                    )
+                ) {
                     setSearchByCategory(typeOfResponse.ALL_PRODUCTS);
-                }else{
+                } else {
                     setSearchByCategory(category);
                 }
             }
         }
 
-        updateProductRequestType()
+        updateProductRequestType();
         updateCategoryCardStyle(refNameCategory);
-
     }
 
     return (
-        <figure className="categories__item" ref={firstCategoryRef ?? refCardCatecory}>
+        <figure
+            className="categories__item"
+            ref={firstCategoryRef ?? refCardCatecory}
+        >
             <img
                 src={`src/assets/icons/category/${category}.svg`}
                 alt={category}
@@ -55,7 +62,8 @@ export const CategoryCard = ({ category, setCardCategory, firstCategoryRef }: Ca
                 className="categories__title"
                 data-category={category}
                 ref={refNameCategory}
-                onClick={handleClick}>
+                onClick={handleClick}
+            >
                 {category}
             </figcaption>
         </figure>

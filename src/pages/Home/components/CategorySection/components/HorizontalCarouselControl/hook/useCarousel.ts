@@ -1,33 +1,25 @@
-import { useEffect, useState } from 'react';
-import { calculateLastSectionShiftSize, calculateNumberOfCarouselPoints } from '../modules/carousel';
+import { useState, useEffect } from "react";
+import { calculateLastSectionShiftSize, calculateNumberOfCarouselPoints } from "../modules/carousel";
 
+export function useCarousel(cardCategory: HTMLElement | null, carouselTrack: React.RefObject<HTMLDivElement>) {
+    const [pointNumber, setPointNumber] = useState(0);
+    const [lastSectionShiftSize, setLastSectionShiftSize] = useState(0);
 
-export const useCarousel = (cardCategory: HTMLElement | null, carouselTrack: React.RefObject<HTMLDivElement>) => {
-
-    const [pointNumber, setPointNumber] = useState<number>(0);
-    const [lastSectionShiftSize, setLastSectionShiftSize] =useState<number>(0)
     useEffect(() => {
-        if (cardCategory) {
-
-            const categoryCardGap = 16
-            const sizeOfCategoryCards = cardCategory.clientWidth + categoryCardGap;
-            const numberOfCardsByCategory = carouselTrack.current?.childNodes.length ?? 0;
-            const visibleCarouselSize = carouselTrack.current?.clientWidth ?? 0;
-            const carouselConfig = {
-                sizeOfCategoryCards,
-                numberOfCardsByCategory,
-                visibleCarouselSize
+        if (cardCategory && carouselTrack.current) {
+            const config = {
+                sizeOfCategoryCards: cardCategory.clientWidth + 16,
+                numberOfCardsByCategory: 10,
+                visibleCarouselSize: carouselTrack.current.clientWidth,
             };
-            const calculatedPoints = calculateNumberOfCarouselPoints(carouselConfig);
-            const lastSectionShiftSize = calculateLastSectionShiftSize(carouselConfig)
-            setPointNumber(calculatedPoints);
-            setLastSectionShiftSize(lastSectionShiftSize)
 
+            const points = calculateNumberOfCarouselPoints(config);
+            const shiftSize = calculateLastSectionShiftSize(config);
+
+            setPointNumber(points);
+            setLastSectionShiftSize(shiftSize);
         }
-    }, [cardCategory]);
+    }, [cardCategory, carouselTrack]);
 
-    return {
-        pointNumber,
-        lastSectionShiftSize
-    };
-};
+    return { pointNumber, lastSectionShiftSize };
+}

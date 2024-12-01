@@ -5,12 +5,12 @@ import { Select } from "./components/Select/Select";
 import { validateForm } from "./modules/validateForm";
 
 export interface valuesForm {
-    name: string,
-    lastName: string,
-    district: string,
-    address: string,
-    reference: string,
-    phone: string,
+    name: string;
+    lastName: string;
+    district: string;
+    address: string;
+    reference: string;
+    phone: string;
 }
 
 export const initialForm: valuesForm = {
@@ -22,8 +22,8 @@ export const initialForm: valuesForm = {
     phone: "",
 };
 
-export const OrderForm = () =>{
-    const [dataForm, setDataForm] = useState<valuesForm>(initialForm)
+export const OrderForm = () => {
+    const [dataForm, setDataForm] = useState<valuesForm>(initialForm);
     const [errors, setErrors] = useState<Partial<valuesForm>>({});
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,16 +35,16 @@ export const OrderForm = () =>{
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (validateForm({dataForm, setErrors})) {
-          alert('Tu pedido se registró con éxito 🙌');
-          setErrors(initialForm)
-          navigate(ModuleRoutes.Init)
+        if (validateForm({ dataForm, setErrors })) {
+            alert("Tu pedido se registró con éxito 🙌");
+            setErrors(initialForm);
+            navigate(ModuleRoutes.Init);
         }
     };
 
-    return(
+    return (
         <section className="cart-page__shipping">
-            <h1 className="cart-page__shipping-title">Información de Envío</h1>
+            <h1 className="cart-page__shipping-title">Shipping Information</h1>
             <form className="cart-page__form">
                 <div>
                     <input
@@ -71,7 +71,7 @@ export const OrderForm = () =>{
                     {errors.lastName && <span>{errors.lastName}</span>}
                 </div>
                 <div>
-                    <Select setDataForm={setDataForm}/>
+                    <Select setDataForm={setDataForm} />
                     {errors.district && <span>{errors.district}</span>}
                 </div>
                 <div>
@@ -110,8 +110,13 @@ export const OrderForm = () =>{
                     />
                     {errors.phone && <span>{errors.phone}</span>}
                 </div>
-                <button className="cart-page__button cart-page__button--submit" onClick={handleSubmit}>Comprar</button>
+                <button
+                    className="cart-page__button cart-page__button--submit"
+                    onClick={handleSubmit}
+                >
+                    Comprar
+                </button>
             </form>
         </section>
-    )
-}
+    );
+};

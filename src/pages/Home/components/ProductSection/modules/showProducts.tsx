@@ -1,4 +1,4 @@
-import { MappedProduct } from "../../../../../models/product.model";
+import { MappedProduct } from "@/models/product.model";
 import { FilterError } from "../components/FilterError/FilterError";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 
