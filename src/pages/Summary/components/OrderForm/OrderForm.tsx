@@ -38,7 +38,7 @@ export const OrderForm = () => {
         if (validateForm({ dataForm, setErrors })) {
             alert("Tu pedido se registró con éxito 🙌");
             setErrors(initialForm);
-            navigate(ModuleRoutes.Init);
+            navigate(ModuleRoutes.Home);
         }
     };
 

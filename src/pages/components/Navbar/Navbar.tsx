@@ -12,7 +12,7 @@ export const Navbar =(): ReactNode => {
     return (
 		<header className="header">
 			<nav className="header__main">
-				<NavLink to={ModuleRoutes.Init}>
+				<NavLink to={ModuleRoutes.Home}>
 					<figure className="header__logo">
 						<img src="src/assets/logos/logo-shop-main.svg" alt="Store logo"/>
 					</figure>
