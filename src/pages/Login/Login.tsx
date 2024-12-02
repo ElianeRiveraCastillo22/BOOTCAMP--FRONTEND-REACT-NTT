@@ -3,7 +3,17 @@ import { InputForm } from "../components/Form/InputForm";
 import { ButtonForm } from "../components/Form/ButtonForm";
 import { ModuleRoutes } from "../routes";
 import { NavLink } from "react-router-dom";
+import { Modal } from "../components/Modal/Modal";
+import { ForgotPassword } from "./components/ForgotPassword";
+import { useModalContext } from "@/context/Modal/UseModalContext";
 export const Login = () => {
+
+    const { setState } = useModalContext()
+
+    const openModal = () => {
+      setState(true)
+    }
+
     return (
         <div className="form-container">
             <section className="form-section">
@@ -31,9 +41,13 @@ export const Login = () => {
                         <button
                             type="button"
                             className="form-button form-button--forgot"
+                            onClick={openModal}
                         >
                             Forgot Password
                         </button>
+                        <Modal>
+                            <ForgotPassword/>
+                        </Modal>
                         <div className="form-footer__signup">
                             <p>Are you signed up?</p>
                             <NavLink to={ModuleRoutes.SignUp}>
