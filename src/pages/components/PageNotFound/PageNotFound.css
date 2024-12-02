@@ -1,0 +1,27 @@
+.error-page{
+    height: 100dvh;
+    width: 100dvw;
+    position: absolute;
+    top: 0;
+    background: var(--color-Bright);
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.error-page__code{
+    color: var(--color-Error);
+    font-weight: 900;
+    font-size: 80px;
+}
+.error-page__description{
+    text-align: center;
+    max-width: 300px;
+}
+.error-page__button{
+    font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
+    color: var(--color-Primary);
+    cursor: pointer;
+    text-decoration-line: underline;
+}
