@@ -1,9 +1,10 @@
 interface Prop{
     nameButton:string
+    type?: "submit" | "reset" | "button";
 }
-export const ButtonForm = ( {nameButton}: Prop) => {
+export const ButtonForm = ( {nameButton, type}: Prop) => {
     return (
-        <button type="button" className="form-button form-button--submit">
+        <button type={type} className="form-button form-button--submit">
             {nameButton}
         </button>
     );
