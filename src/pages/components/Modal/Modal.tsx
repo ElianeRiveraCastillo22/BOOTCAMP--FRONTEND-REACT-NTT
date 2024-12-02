@@ -10,10 +10,10 @@ const eventListener = "keydown";
 
 export const Modal = ({ children }: Props) => {
     const modalRef = useRef<HTMLDivElement>(null);
-    const { state, setState } = useModalContext();
+    const { isOpenModal, setIsOpenModal } = useModalContext();
 
     const closeModal = () => {
-        setState(false);
+        setIsOpenModal(false);
     };
 
     const modalRoot = document.getElementById("modal");
@@ -25,18 +25,18 @@ export const Modal = ({ children }: Props) => {
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === "Escape") {
-                setState(false);
+                setIsOpenModal(false);
             }
         };
-        if (state) {
+        if (isOpenModal) {
             document.addEventListener(eventListener, handleEsc);
         }
         return () => {
             document.removeEventListener(eventListener, handleEsc);
         };
-    }, [setState, state]);
+    }, [setIsOpenModal, isOpenModal]);
 
-    if (!state || !modalRoot) {
+    if (!isOpenModal || !modalRoot) {
         return null;
     }
 

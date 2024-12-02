@@ -1,17 +1,17 @@
 import { createContext, ReactNode, useState } from "react";
 
 const ModalContext = createContext<{
-  state: boolean;
-  setState: React.Dispatch<React.SetStateAction<boolean>>
+  isOpenModal: boolean;
+  setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }>({
-  state: false,
-  setState: () => null
+  isOpenModal: false,
+  setIsOpenModal: () => null
 })
 
 const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [state, setState] = useState<boolean>(false)
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
-  return <ModalContext.Provider value={{ state, setState }}>{children}</ModalContext.Provider>
+  return <ModalContext.Provider value={{ isOpenModal, setIsOpenModal }}>{children}</ModalContext.Provider>
 }
 
 export {
