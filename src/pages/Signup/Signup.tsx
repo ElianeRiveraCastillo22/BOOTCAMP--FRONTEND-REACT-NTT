@@ -1,6 +1,8 @@
 import "css/form.css";
 import { ButtonForm } from "../components/Form/ButtonForm"
 import { InputForm } from "../components/Form/InputForm"
+import { NavLink } from "react-router-dom";
+import { ModuleRoutes } from "../routes";
 
 export const Signup = () => {
     return (
@@ -35,7 +37,9 @@ export const Signup = () => {
                     <footer className="form-footer">
                         <div className="form-footer__logIn">
                             <p>Do you have an account?</p>
-                            <a href="/signup" className="form-link">Log In</a>
+                            <NavLink to={ModuleRoutes.Login}>
+                                <a href="/signup" className="form-link">Log In</a>
+                            </NavLink>
                         </div>
                     </footer>
                 </form>
