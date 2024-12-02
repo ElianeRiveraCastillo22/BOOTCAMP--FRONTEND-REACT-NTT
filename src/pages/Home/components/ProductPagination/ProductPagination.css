@@ -1,0 +1,19 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    padding: 8%;
+}
+.pagination__button{
+    clip-path: circle(50%);
+    background: var(--color-Accent);
+    padding: .75rem;
+}
+
+.pagination__button--next img{
+    transform: rotate(180deg);
+}
+.pagination__button--prevNone{
+    display: none;
+}

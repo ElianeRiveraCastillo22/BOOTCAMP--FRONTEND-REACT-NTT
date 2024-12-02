@@ -4,6 +4,12 @@ export interface ProductResponse {
     skip: number;
     limit: number;
 }
+export interface MappedProductResponse {
+    products: MappedProduct[];
+    total: number;
+    skip: number;
+    limit: number;
+}
 
 export interface Product {
     id: number;
