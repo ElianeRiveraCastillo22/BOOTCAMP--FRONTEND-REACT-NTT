@@ -1,0 +1,19 @@
+.popUpConfirm {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8%;
+}
+.popUpConfirm p{
+    max-width: 60%;
+    text-align: center;
+    color: var(--color-Primary);
+    font-weight: 900;
+    font-size: 14px;
+}
+.popUpConfirm h1{
+    color: var(--color-Primary);
+}
