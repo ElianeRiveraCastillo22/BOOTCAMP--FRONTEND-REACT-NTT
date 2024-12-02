@@ -19,12 +19,12 @@ export const Login = () => {
                         name="Email"
                     />
                     <InputForm
-                            type="password"
-                            id="Password"
-                            placeholder="Password"
-                            name="Password"
+                        type="password"
+                        id="Password"
+                        placeholder="Password"
+                        name="Password"
                     />
-                    <ButtonForm nameButton="Log in"/>
+                    <ButtonForm nameButton="Log in" />
                     <footer className="form-footer">
                         <button
                             type="button"
@@ -32,11 +32,15 @@ export const Login = () => {
                         >
                             Forgot Password
                         </button>
-                        <a href="/signup" className="form-link">Sign up</a>
+                        <div className="form-footer__signup">
+                            <p>Are you signed up?</p>
+                            <a href="/signup" className="form-link">
+                                Sign up
+                            </a>
+                        </div>
                     </footer>
                 </form>
             </section>
         </div>
-
     );
 };
