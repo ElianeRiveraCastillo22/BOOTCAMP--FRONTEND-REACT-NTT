@@ -1,4 +1,4 @@
-import './App.css'
+import './css/App.css'
 import { AppRouter } from './AppRouter'
 import { FilterProvider } from './context/filters/filters.provider'
 import { ShoppingCartProvider } from './context/ShoppingCart/ShoppingCart.provider'
