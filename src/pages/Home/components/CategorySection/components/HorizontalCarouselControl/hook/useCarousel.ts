@@ -7,10 +7,14 @@ export function useCarousel(cardCategory: HTMLElement | null, carouselTrack: Rea
 
     useEffect(() => {
         if (cardCategory && carouselTrack.current) {
+            const categoryCardGap = 16
+            const sizeOfCategoryCards = cardCategory.clientWidth + categoryCardGap;
+            const numberOfCardsByCategory = carouselTrack.current?.childNodes.length ;
+            const visibleCarouselSize = carouselTrack.current?.clientWidth;
             const config = {
-                sizeOfCategoryCards: cardCategory.clientWidth + 16,
-                numberOfCardsByCategory: 10,
-                visibleCarouselSize: carouselTrack.current.clientWidth,
+                sizeOfCategoryCards,
+                numberOfCardsByCategory,
+                visibleCarouselSize
             };
 
             const points = calculateNumberOfCarouselPoints(config);

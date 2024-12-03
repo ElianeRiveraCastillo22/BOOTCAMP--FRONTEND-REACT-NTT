@@ -18,7 +18,7 @@ export const HorizontalCarouselControl = ({
     const refPoint = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (refPoint.current && position === 2) {
+        if (refPoint.current && position === 0) {
             refPoint.current.classList.add("selectedPoint");
         }
     }, [position]);

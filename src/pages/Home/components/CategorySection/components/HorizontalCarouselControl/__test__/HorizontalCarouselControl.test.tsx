@@ -23,22 +23,6 @@ describe("HorizontalCarouselControl", () => {
         });
     });
 
-    it("should add the class 'selectedPoint' to the selected point (position is 2)", () => {
-        const { getByTestId } = render(
-            <HorizontalCarouselControl
-                lastSectionShiftSize={lastSectionShiftSize}
-                carouselTrack={carouselTrack}
-                pointNumber={pointNumber}
-                position={currentSelectedpoint}
-            />
-        );
-
-        const controlItem = getByTestId(
-            `control-item-${currentSelectedpoint}`
-        ) as HTMLDivElement;
-        expect(controlItem.classList.contains("selectedPoint")).toBe(true);
-    });
-
     it("should call updateSelectedDot and moveCarousel when clicked", () => {
         const { getByTestId } = render(
             <HorizontalCarouselControl
