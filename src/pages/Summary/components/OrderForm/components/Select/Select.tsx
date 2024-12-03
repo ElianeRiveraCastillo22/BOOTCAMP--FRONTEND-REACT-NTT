@@ -22,7 +22,7 @@ export const Select = ({ setDataForm }: Prop) => {
                 onClick={() => setIsSelectOpen(!isSelectOpen)}
             >
                 <p className="cart-page__label" ref={refLabel}>
-                    Seleccionar Distrito
+                    Select district
                 </p>
                 <img src="src/assets/icons/dragIcon.svg" />
             </div>

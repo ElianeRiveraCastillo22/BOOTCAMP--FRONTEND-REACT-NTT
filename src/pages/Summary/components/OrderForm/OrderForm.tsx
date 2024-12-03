@@ -49,10 +49,10 @@ export const OrderForm = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Nombre"
+                        placeholder="Name"
                         name="name"
                         className="cart-page__input"
-                        aria-label="Nombre"
+                        aria-label="Name"
                         value={dataForm.name}
                         onChange={handleChange}
                     />
@@ -61,10 +61,10 @@ export const OrderForm = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Apellido"
+                        placeholder="Last name"
                         name="lastName"
                         className="cart-page__input"
-                        aria-label="Apellido"
+                        aria-label="Last name"
                         value={dataForm.lastName}
                         onChange={handleChange}
                     />
@@ -77,10 +77,10 @@ export const OrderForm = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Dirección"
+                        placeholder="Address"
                         name="address"
                         className="cart-page__input"
-                        aria-label="Dirección"
+                        aria-label="Address"
                         value={dataForm.address}
                         onChange={handleChange}
                     />
@@ -89,10 +89,10 @@ export const OrderForm = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Referencia"
+                        placeholder="Reference"
                         name="reference"
                         className="cart-page__input"
-                        aria-label="Referencia"
+                        aria-label="Reference"
                         value={dataForm.reference}
                         onChange={handleChange}
                     />
@@ -101,10 +101,10 @@ export const OrderForm = () => {
                 <div>
                     <input
                         type="text"
-                        placeholder="Celular"
+                        placeholder="Phone"
                         name="phone"
                         className="cart-page__input"
-                        aria-label="Celular"
+                        aria-label="Phone"
                         value={dataForm.phone}
                         onChange={handleChange}
                     />
@@ -114,7 +114,7 @@ export const OrderForm = () => {
                     className="cart-page__button cart-page__button--submit"
                     onClick={handleSubmit}
                 >
-                    Comprar
+                    Complete Purchase
                 </button>
             </form>
         </section>

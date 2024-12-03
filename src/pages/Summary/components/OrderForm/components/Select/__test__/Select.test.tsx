@@ -58,7 +58,7 @@ describe("<Select/>", () => {
     it("renders dropdown as open when clicked", () => {
         renderSelectComponent();
 
-        const label = screen.getByText("Seleccionar Distrito");
+        const label = screen.getByText("Select district");
         act(() => {
             fireEvent.click(label);
         });
