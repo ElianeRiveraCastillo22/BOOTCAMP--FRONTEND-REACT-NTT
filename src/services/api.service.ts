@@ -28,11 +28,10 @@ async function getAllProducts(
 ): Promise<MappedProductResponse> {
     try {
         const url = `/api/products?limit=${limit}&&skip=${skip}`;
-        console.log(url);
         const response = await fetch(url);
         if (!response.ok)
             throw new Error(
-                `Fallo al buscar productos, status: ${response.status}`
+                `Failed to search for products, status: ${response.status}`
             );
 
         const data: ProductResponse = await response.json();
@@ -56,7 +55,7 @@ async function getCategoryProducts(category: string): Promise<MappedProduct[]> {
         const response = await fetch(url);
         if (!response.ok)
             throw new Error(
-                `Fallo al buscar los produtos de la categoría, status: ${response.status}`
+                `Failed to search for products in the category, status: ${response.status}`
             );
 
         const data: ProductResponse = await response.json();
