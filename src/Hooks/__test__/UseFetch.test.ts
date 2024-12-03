@@ -6,7 +6,6 @@ import { act, renderHook, waitFor } from "@testing-library/react";
 import { useFetch } from "../UseFetch";
 
 describe("useFetch hook", () => {
-
     let spy: jest.SpyInstance;
 
     it("should return initial state", async () => {
@@ -21,7 +20,6 @@ describe("useFetch hook", () => {
     });
 
     it("should update the data when getProductCategoryList returns the category list", async () => {
-
         const spy = jest.spyOn(services, "getProductCategoryList");
         spy.mockResolvedValue(mockCategoryList);
         const { result } = renderHook(() =>
@@ -42,19 +40,21 @@ describe("useFetch hook", () => {
     it("should update the data when getAllProducts returns the product list", async () => {
         spy = jest.spyOn(services, "getAllProducts");
         spy.mockResolvedValue(mockAllProductsMapped);
-        const { result } = renderHook(() => useFetch(() => services.getAllProducts("16", "0")));
-        await waitFor(() => expect(result.current.data).toEqual(mockAllProductsMapped));
+        const { result } = renderHook(() =>
+            useFetch(() => services.getAllProducts("16", "0"))
+        );
+        await waitFor(() =>
+            expect(result.current.data).toEqual(mockAllProductsMapped)
+        );
 
         expect(result.current.loading).toBe(false);
         expect(result.current.error).toBeNull();
         expect(spy).toHaveBeenCalledTimes(1);
 
         spy.mockRestore();
-
     });
 
     it("should update the data when getCategoryProducts returns the category product list", async () => {
-
         const spy = jest.spyOn(services, "getCategoryProducts");
         spy.mockResolvedValue([productStub]);
 
@@ -70,11 +70,9 @@ describe("useFetch hook", () => {
         expect(spy).toHaveBeenCalledTimes(1);
 
         spy.mockRestore();
-
     });
 
     it("should update the data when getCategoryProducts returns the category product list", async () => {
-
         const spy = jest.spyOn(services, "getCategoryProducts");
         spy.mockResolvedValue([productStub]);
 
@@ -90,11 +88,9 @@ describe("useFetch hook", () => {
         expect(spy).toHaveBeenCalledTimes(1);
 
         spy.mockRestore();
-
     });
 
     it("should update the data when fetchDistricts returns the districts", async () => {
-
         const spy = jest.spyOn(services, "fetchDistricts");
         spy.mockResolvedValue(["Surquillo"]);
 
@@ -110,7 +106,6 @@ describe("useFetch hook", () => {
         expect(spy).toHaveBeenCalledTimes(1);
 
         spy.mockRestore();
-
     });
 
     it("should set error when apiCall fails", async () => {
