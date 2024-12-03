@@ -31,7 +31,6 @@ export const UsePagination = (
         setLoading(true);
         const fetchData = async () => {
             try {
-                console.log(skip)
                 const response = await getAllProducts(String(limit), String(skip));
                 setData(response);
                 setError(null);

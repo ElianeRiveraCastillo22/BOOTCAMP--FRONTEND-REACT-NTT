@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">81.25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>13/16</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>12/15</span>
             </div>
         
             
@@ -118,7 +118,16 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -126,10 +135,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,23 +192,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ReactNode } from "react";
-import { NavLink } from "react-router-dom";
-import { ModuleRoutes } from "../../routes";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useFilterContext, useShoppingCartContext } from "../../../context";
+import { ModuleRoutes } from "../../routes";
 import "./Navbar.css";
 &nbsp;
 export const Navbar =(): ReactNode =&gt; {
 &nbsp;
 	const { stateCart } = useShoppingCartContext();
-	const {setSearchByTitle} = useFilterContext()
+	const { setSearchByTitle } = useFilterContext()
+	const navigate = useNavigate();
 &nbsp;
+	function <span class="fstat-no" title="function not covered" >logOut(</span>) {
+<span class="cstat-no" title="statement not covered" >		localStorage.removeItem("accessToken")</span>
+<span class="cstat-no" title="statement not covered" >		localStorage.removeItem("user")</span>
+<span class="cstat-no" title="statement not covered" >		navigate(ModuleRoutes.Login);</span>
+	}
+&nbsp;
+	const nameuser = localStorage.getItem("user")
     return (
 		&lt;header className="header"&gt;
 			&lt;nav className="header__main"&gt;
-				&lt;NavLink to={ModuleRoutes.Init}&gt;
+				&lt;NavLink to={ModuleRoutes.Home}&gt;
 					&lt;figure className="header__logo"&gt;
 						&lt;img src="src/assets/logos/logo-shop-main.svg" alt="Store logo"/&gt;
 					&lt;/figure&gt;
+					&lt;p className="header__userName"&gt;Bienvenido:&lt;span&gt;{` ${nameuser}`}&lt;/span&gt; &lt;/p&gt;
 				&lt;/NavLink&gt;
 				&lt;section className="header__nav" aria-label="Main navigation"&gt;
 					&lt;input
@@ -201,9 +228,6 @@ export const Navbar =(): ReactNode =&gt; {
 						aria-label="Search product"
 						aria-hidden={window.innerWidth &gt;= 768}
 					/&gt;
-					&lt;figure className="header__profile"&gt;
-						&lt;img src="src/assets/icons/profile.svg" alt="Icono profile"/&gt;
-					&lt;/figure&gt;
 					&lt;NavLink to={ModuleRoutes.Summary}&gt;
 						&lt;div className="header__cart-container"&gt;
 							&lt;figure className="header__cart"&gt;
@@ -212,7 +236,10 @@ export const Navbar =(): ReactNode =&gt; {
 							&lt;small className="header__counter" aria-label="Number of products in cart"&gt;{stateCart.length}&lt;/small&gt;
 						&lt;/div&gt;
 					&lt;/NavLink&gt;
-&nbsp;
+					&lt;figure className="header__logout" onClick={logOut}&gt;
+						&lt;img src="src/assets/icons/logout.svg" alt="Icono profile"/&gt;
+						&lt;figcaption&gt;Log &lt;br/&gt; out&lt;/figcaption&gt;
+					&lt;/figure&gt;
 				&lt;/section&gt;
 			&lt;/nav&gt;
 			&lt;nav className="header__search header__search--mobile"&gt;
@@ -235,7 +262,7 @@ export const Navbar =(): ReactNode =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-12-01T12:23:23.571Z
+                at 2024-12-03T18:00:54.783Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
