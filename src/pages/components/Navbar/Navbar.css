@@ -39,14 +39,25 @@
     display: none;
 }
 
-.header__profile:hover{
+.header__logout:hover{
     transform: scale(1.2);
 }
-.header__profile{
+.header__logout{
     cursor: pointer;
+    display: flex;
+    height: 100%;
+    gap: .25rem;
 }
-.header__profile img{
+.header__logout img{
     height: 1.625rem;
+}
+.header__logout figcaption{
+    font-weight: 700;
+    font-size: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--color-Primary);
 }
 .header__cart {
     padding-right: .5rem;
@@ -78,6 +89,12 @@
 .header__nav .header__input--desktop {
     display: none;
 }
+.header__userName{
+    padding-top: .25rem;
+    font-weight: 900;
+    color: var(--color-Primary);
+    font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem)
+}
 
 @media (width >=768px) {
     .header__nav .header__input--desktop {
@@ -86,9 +103,7 @@
     .header__search.header__search--mobile{
         display: none;
     }
-    .header {
-        padding: 2.25rem 2.25rem 0px 2.25rem ;
-    }
+
     .header__input {
         min-width: 308px;
         padding: .8rem;

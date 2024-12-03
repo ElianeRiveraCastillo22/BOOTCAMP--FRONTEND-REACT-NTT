@@ -1,14 +1,21 @@
 import { ReactNode } from "react";
-import { NavLink } from "react-router-dom";
-import { ModuleRoutes } from "../../routes";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useFilterContext, useShoppingCartContext } from "../../../context";
+import { ModuleRoutes } from "../../routes";
 import "./Navbar.css";
 
 export const Navbar =(): ReactNode => {
 
 	const { stateCart } = useShoppingCartContext();
-	const {setSearchByTitle} = useFilterContext()
+	const { setSearchByTitle } = useFilterContext()
+	const navigate = useNavigate();
 
+	function logOut() {
+		localStorage.removeItem("accessToken")
+		navigate(ModuleRoutes.Login);
+	}
+
+	const nameuser = localStorage.getItem("user")
     return (
 		<header className="header">
 			<nav className="header__main">
@@ -16,6 +23,7 @@ export const Navbar =(): ReactNode => {
 					<figure className="header__logo">
 						<img src="src/assets/logos/logo-shop-main.svg" alt="Store logo"/>
 					</figure>
+					<p className="header__userName">Bienvenido:<span>{` ${nameuser}`}</span> </p>
 				</NavLink>
 				<section className="header__nav" aria-label="Main navigation">
 					<input
@@ -26,9 +34,6 @@ export const Navbar =(): ReactNode => {
 						aria-label="Search product"
 						aria-hidden={window.innerWidth >= 768}
 					/>
-					<figure className="header__profile">
-						<img src="src/assets/icons/profile.svg" alt="Icono profile"/>
-					</figure>
 					<NavLink to={ModuleRoutes.Summary}>
 						<div className="header__cart-container">
 							<figure className="header__cart">
@@ -37,7 +42,10 @@ export const Navbar =(): ReactNode => {
 							<small className="header__counter" aria-label="Number of products in cart">{stateCart.length}</small>
 						</div>
 					</NavLink>
-
+					<figure className="header__logout" onClick={logOut}>
+						<img src="src/assets/icons/logout.svg" alt="Icono profile"/>
+						<figcaption>Log  <br/> out</figcaption>
+					</figure>
 				</section>
 			</nav>
 			<nav className="header__search header__search--mobile">
