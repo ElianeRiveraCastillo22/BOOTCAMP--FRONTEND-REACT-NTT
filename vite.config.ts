@@ -4,5 +4,16 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+    plugins: [react(), tsconfigPaths()],
+		server: {
+			proxy: {
+				"/api": {
+					target: "https://dummyjson.com",
+					changeOrigin: true,
+					secure: false,
+					rewrite: (p) => p.replace(/^\/api/, ""),
+				},
+			},
+			cors: false,
+		},
 });
