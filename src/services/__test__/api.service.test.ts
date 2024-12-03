@@ -1,6 +1,6 @@
 import { ProductResponse } from "@/models/product.model";
 import { mockFetch } from "@/utils/mockFetch";
-import { mockAllProducts } from "../__mock__/allProducts";
+import { mockAllProducts, mockAllProductsMapped } from "../__mock__/allProducts";
 import { mockCategoryList } from "../__mock__/categoryList";
 import { fetchDistricts, getAllProducts, getCategoryProducts, getProductCategoryList } from "../api.service";
 import { productStub } from "@/mappers/__stubs__/product.stub";
@@ -49,8 +49,8 @@ describe("SHOP Services", () => {
 	it("returns a product list when the API call is successful", async()=>{
 
 		mockFetch<ProductResponse>(mockAllProducts)
-		const dataCategoryList = await getAllProducts()
-		expect(dataCategoryList).toEqual([productStub])
+		const dataCategoryList = await getAllProducts("16"," 0")
+		expect(dataCategoryList).toEqual(mockAllProductsMapped)
 
 	})
 
@@ -60,11 +60,11 @@ describe("SHOP Services", () => {
 
         try {
 
-            await getAllProducts();
+            await getAllProducts("16"," 0");
 
         } catch (error) {
 
-            expect(error).toEqual(new Error(`Fallo al buscar productos, status: 404`));
+            expect(error).toEqual(new Error(`Failed to search for products, status: 404`));
 
         }
 
@@ -88,7 +88,7 @@ describe("SHOP Services", () => {
 
         } catch (error) {
 
-            expect(error).toEqual(new Error(`Fallo al buscar los produtos de la categoría, status: 404`));
+            expect(error).toEqual(new Error(`Failed to search for products in the category, status: 404`));
 
         }
 
@@ -121,7 +121,7 @@ describe("SHOP Services", () => {
 
     it.each([
         () => getProductCategoryList(),
-        () => getAllProducts(),
+        () => getAllProducts("16"," 0"),
         () => getCategoryProducts("beauty"),
         () => getProductCategoryList(),
     ])(
