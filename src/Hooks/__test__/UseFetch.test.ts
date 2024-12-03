@@ -1,4 +1,5 @@
 import { productStub } from "@/mappers/__stubs__/product.stub";
+import { mockAllProductsMapped } from "@/services/__mock__/allProducts";
 import { mockCategoryList } from "@/services/__mock__/categoryList";
 import * as services from "@/services/api.service";
 import { act, renderHook, waitFor } from "@testing-library/react";
@@ -39,13 +40,10 @@ describe("useFetch hook", () => {
     });
 
     it("should update the data when getAllProducts returns the product list", async () => {
-
         spy = jest.spyOn(services, "getAllProducts");
-        spy.mockResolvedValue([productStub]);
-
-        const { result } = renderHook(() => useFetch(services.getAllProducts));
-
-        await waitFor(() => expect(result.current.data).toEqual([productStub]));
+        spy.mockResolvedValue(mockAllProductsMapped);
+        const { result } = renderHook(() => useFetch(() => services.getAllProducts("16", "0")));
+        await waitFor(() => expect(result.current.data).toEqual(mockAllProductsMapped));
 
         expect(result.current.loading).toBe(false);
         expect(result.current.error).toBeNull();
