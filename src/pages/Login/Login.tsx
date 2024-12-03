@@ -14,10 +14,12 @@ import {
 import { Modal } from "../components/Modal/Modal";
 import { ModuleRoutes } from "../routes";
 import { ForgotPassword } from "./components/ForgotPassword";
+import { useEffect, useState } from "react";
 
 export const Login = () => {
     const { isOpenModal, setIsOpenModal } = useModalContext();
     const { setUserCredentials } = useUserContext();
+    const [error, setError] = useState<Error | null>(null);
 
     const navigate = useNavigate();
 
@@ -41,12 +43,22 @@ export const Login = () => {
             const userCredentials = await loginUser(username, password);
             setUserCredentials(userCredentials);
             localStorage.setItem("accessToken", userCredentials.accessToken);
-            localStorage.setItem("user", `${userCredentials.username} ${userCredentials.lastName}`);
+            localStorage.setItem(
+                "user",
+                `${userCredentials.username} ${userCredentials.lastName}`
+            );
             navigate(ModuleRoutes.Home);
         } catch (error) {
-            console.error("Error al autenticar: ", error);
+            if(error instanceof Error ){
+                setError(error);
+            }
         }
     };
+    useEffect(() => {
+        if (error) {
+            alert(error.message);
+        }
+    }, [error]);
 
     const openModal = () => {
         setIsOpenModal(true);
