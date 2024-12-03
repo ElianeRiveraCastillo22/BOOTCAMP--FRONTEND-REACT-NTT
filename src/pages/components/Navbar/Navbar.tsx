@@ -12,6 +12,7 @@ export const Navbar =(): ReactNode => {
 
 	function logOut() {
 		localStorage.removeItem("accessToken")
+		localStorage.removeItem("user")
 		navigate(ModuleRoutes.Login);
 	}
 
@@ -44,7 +45,7 @@ export const Navbar =(): ReactNode => {
 					</NavLink>
 					<figure className="header__logout" onClick={logOut}>
 						<img src="src/assets/icons/logout.svg" alt="Icono profile"/>
-						<figcaption>Log  <br/> out</figcaption>
+						<figcaption>Log <br/> out</figcaption>
 					</figure>
 				</section>
 			</nav>

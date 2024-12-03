@@ -45,7 +45,7 @@ export const Login = () => {
             localStorage.setItem("accessToken", userCredentials.accessToken);
             localStorage.setItem(
                 "user",
-                `${userCredentials.username} ${userCredentials.lastName}`
+                `${userCredentials.firstName} ${userCredentials.lastName}`
             );
             navigate(ModuleRoutes.Home);
         } catch (error) {
