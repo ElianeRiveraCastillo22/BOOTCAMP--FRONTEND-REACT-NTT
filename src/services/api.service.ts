@@ -7,7 +7,7 @@ import {
 
 async function getProductCategoryList(): Promise<string[]> {
     try {
-        const url = `${import.meta.env.VITE_BASE_API}/products/category-list`;
+        const url = `/api/products/category-list`;
 
         const response = await fetch(url);
         if (!response.ok)
@@ -22,10 +22,13 @@ async function getProductCategoryList(): Promise<string[]> {
     }
 }
 
-async function getAllProducts(limit: string, skip: string): Promise<MappedProductResponse> {
+async function getAllProducts(
+    limit: string,
+    skip: string
+): Promise<MappedProductResponse> {
     try {
-        const url = `${import.meta.env.VITE_BASE_API}/products?limit=${limit}&&skip=${skip}`;
-        console.log(url)
+        const url = `/api/products?limit=${limit}&&skip=${skip}`;
+        console.log(url);
         const response = await fetch(url);
         if (!response.ok)
             throw new Error(
@@ -48,9 +51,7 @@ async function getAllProducts(limit: string, skip: string): Promise<MappedProduc
 
 async function getCategoryProducts(category: string): Promise<MappedProduct[]> {
     try {
-        const url = `${
-            import.meta.env.VITE_BASE_API
-        }/products/category/${category}`;
+        const url = `/api/products/category/${category}`;
 
         const response = await fetch(url);
         if (!response.ok)
@@ -82,5 +83,4 @@ export {
     getAllProducts,
     getCategoryProducts,
     fetchDistricts,
-    /* getAllProducts2 */
 };

@@ -1,20 +1,26 @@
-import "css/form.css";
-import { ButtonForm } from "../components/Form/ButtonForm";
-import { ModuleRoutes } from "../routes";
-import { NavLink } from "react-router-dom";
-import { Modal } from "../components/Modal/Modal";
-import { ForgotPassword } from "./components/ForgotPassword";
-import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { useModalContext } from "@/context/Modal/UseModalContext";
+import { useUserContext } from "@/context/user/useUserContext";
+import { loginUser } from "@/services/apiuser.service";
+import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
+import "css/form.css";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ButtonForm } from "../components/Form/ButtonForm";
+import { InputLogin } from "../components/Form/InputForm/InputLogin";
 import {
     FormValuesLogin,
     schemaLogin,
 } from "../components/Form/schema/form.schema";
-import { InputLogin } from "../components/Form/InputForm/InputLogin";
+import { Modal } from "../components/Modal/Modal";
+import { ModuleRoutes } from "../routes";
+import { ForgotPassword } from "./components/ForgotPassword";
 
 export const Login = () => {
-    const { isOpenModal, setIsOpenModal} = useModalContext();
+    const { isOpenModal, setIsOpenModal } = useModalContext();
+    const { setUserCredentials } = useUserContext();
+
+    const navigate = useNavigate();
+
     const {
         control,
         handleSubmit,
@@ -22,19 +28,30 @@ export const Login = () => {
     } = useForm<FormValuesLogin>({
         resolver: zodResolver(schemaLogin),
         mode: "onBlur",
-        defaultValues:{
-            username:"emilys",
-            email:"emily.johnson@x.dummyjson.com",
-            password:"emilyspass"
-        }
+        defaultValues: {
+            username: "emilys",
+            email: "emily.johnson@x.dummyjson.com",
+            password: "emilyspass",
+        },
     });
 
-    const onSubmit: SubmitHandler<FormValuesLogin> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<FormValuesLogin> = async (credentialUser) => {
+        const { username, password } = credentialUser;
+        try {
+            const userCredentials = await loginUser(username, password);
+            setUserCredentials(userCredentials);
+            localStorage.setItem("accessToken", userCredentials.accessToken);
+            localStorage.setItem("user", `${userCredentials.username} ${userCredentials.lastName}`);
+            navigate(ModuleRoutes.Home);
+        } catch (error) {
+            console.error("Error al autenticar: ", error);
+        }
     };
+
     const openModal = () => {
         setIsOpenModal(true);
     };
+
     return (
         <div className="form-container">
             <section className="form-section">
