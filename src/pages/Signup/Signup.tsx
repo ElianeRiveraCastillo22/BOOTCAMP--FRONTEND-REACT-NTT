@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import "css/form.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { ButtonForm } from "../components/Form/ButtonForm";
+import { ButtonForm } from "../components/Form/ButtonForm/ButtonForm";
 import { InputSignUp } from "../components/Form/InputForm/InputSignUp";
 import {
     FormValuesSignUp,

@@ -1,6 +1,6 @@
 import { Control, Controller, FieldError } from "react-hook-form";
-import "./InputForm.css";
 import { FormValuesSignUp } from "../schema/form.schema";
+import "./InputForm.css";
 interface Props {
     name: keyof FormValuesSignUp;
     control: Control<FormValuesSignUp>;
@@ -16,6 +16,7 @@ export const InputSignUp = ({
     error,
     placeholder,
 }: Props) => {
+
     return (
         <div className="form-group">
             <Controller

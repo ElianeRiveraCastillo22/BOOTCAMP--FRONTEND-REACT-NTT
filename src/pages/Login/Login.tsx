@@ -1,11 +1,14 @@
 import { useModalContext } from "@/context/Modal/UseModalContext";
 import { useUserContext } from "@/context/user/useUserContext";
 import { loginUser } from "@/services/apiuser.service";
-import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
+/* import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
+
+ */
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import "css/form.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ButtonForm } from "../components/Form/ButtonForm";
 import { InputLogin } from "../components/Form/InputForm/InputLogin";
 import {
     FormValuesLogin,
@@ -15,6 +18,7 @@ import { Modal } from "../components/Modal/Modal";
 import { ModuleRoutes } from "../routes";
 import { ForgotPassword } from "./components/ForgotPassword";
 import { useEffect, useState } from "react";
+import { ButtonForm } from "../components/Form/ButtonForm/ButtonForm";
 
 export const Login = () => {
     const { isOpenModal, setIsOpenModal } = useModalContext();
@@ -78,7 +82,7 @@ export const Login = () => {
                         name="username"
                         control={control}
                         type="name"
-                        error={errors.email}
+                        error={errors.username}
                         placeholder="User name"
                     />
                     <InputLogin

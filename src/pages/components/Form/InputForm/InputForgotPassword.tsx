@@ -1,7 +1,7 @@
 import { Control, Controller, FieldError } from "react-hook-form";
-import "./InputForm.css"
 import { FormValuesForgotPassword } from "../schema/form.schema";
-interface Props {
+import "./InputForm.css";
+export interface PropsForgotPassword {
     name: keyof FormValuesForgotPassword;
     control: Control<FormValuesForgotPassword>;
     type?: string;
@@ -15,7 +15,7 @@ export const InputForgotPassword = ({
     type,
     error,
     placeholder,
-}: Props) => {
+}: PropsForgotPassword) => {
     return (
         <div className="form-group">
             <Controller
@@ -28,6 +28,7 @@ export const InputForgotPassword = ({
                         placeholder={placeholder}
                         {...field}
                         className={`form-input ${error ? "is-invalid" : ""}`}
+
                     />
                 )}
             />

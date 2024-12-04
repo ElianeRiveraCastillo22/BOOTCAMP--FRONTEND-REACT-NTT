@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733248855006" clover="3.2.0">
-  <project timestamp="1733248855007" name="All files">
-    <metrics statements="414" coveredstatements="396" conditionals="105" coveredconditionals="92" methods="92" coveredmethods="84" elements="611" coveredelements="572" complexity="0" loc="414" ncloc="414" packages="34" files="43" classes="43"/>
+<coverage generated="1733336258484" clover="3.2.0">
+  <project timestamp="1733336258485" name="All files">
+    <metrics statements="439" coveredstatements="421" conditionals="117" coveredconditionals="104" methods="101" coveredmethods="93" elements="657" coveredelements="618" complexity="0" loc="439" ncloc="439" packages="38" files="49" classes="49"/>
     <package name="Hooks">
       <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="UseFetch.ts" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\Hooks\UseFetch.ts">
@@ -28,7 +28,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="styleMock.ts" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\config\jest\styleMock.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="8" type="stmt"/>
+        <line num="1" count="12" type="stmt"/>
       </file>
     </package>
     <package name="context">
@@ -534,6 +534,61 @@
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.components.Form.ButtonForm">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="ButtonForm.tsx" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\ButtonForm\ButtonForm.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.components.Form.InputForm">
+      <metrics statements="15" coveredstatements="15" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="6"/>
+      <file name="InputForgotPassword.tsx" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\InputForm\InputForgotPassword.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+      <file name="InputLogin.tsx" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\InputForm\InputLogin.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
+      </file>
+      <file name="InputSignUp.tsx" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\InputForm\InputSignUp.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="20" count="8" type="stmt"/>
+        <line num="26" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.components.Form.PopUpConfirm">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="PopUpConfirm.tsx" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\PopUpConfirm\PopUpConfirm.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.components.Form.schema">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="form.schema.ts" path="C:\repositories\programming\projects-2024\to-work\ntt-data\BOOTCAMP--FRONTEND-REACT-NTT\src\pages\components\Form\schema\form.schema.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
     <package name="pages.components.Navbar">

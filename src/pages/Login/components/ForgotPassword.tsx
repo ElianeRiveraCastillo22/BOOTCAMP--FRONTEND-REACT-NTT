@@ -1,11 +1,13 @@
-import { ButtonForm } from "@/pages/components/Form/ButtonForm";
+import { ButtonForm } from "@/pages/components/Form/ButtonForm/ButtonForm";
 import { InputForgotPassword } from "@/pages/components/Form/InputForm/InputForgotPassword";
 import { PopUpConfirm } from "@/pages/components/Form/PopUpConfirm/PopUpConfirm";
 import {
     FormValuesForgotPassword,
     schemaForgotPassword,
 } from "@/pages/components/Form/schema/form.schema";
-import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
+/* import { zodResolver } from "@hookform/resolvers/zod/src/zod.js"; */
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import "./ForgotPassword.css";
 import { useState } from "react";
@@ -58,7 +60,7 @@ export const ForgotPassword = () => {
             </section>
             {openPopUp && (
                 <PopUpConfirm
-                    message={"Se envió la información al correo ingresado."}
+                    message={"The information was sent to the e-mail address entered."}
                 />
             )}
         </>
