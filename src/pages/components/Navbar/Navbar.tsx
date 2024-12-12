@@ -24,6 +24,7 @@ export const Navbar =(): ReactNode => {
 						className="header__input header__input--desktop"
 						placeholder="Search product..."
 						aria-label="Search product"
+						/* por qu'e es necesario? */
 						aria-hidden={window.innerWidth >= 768}
 					/>
 					<figure className="header__profile">

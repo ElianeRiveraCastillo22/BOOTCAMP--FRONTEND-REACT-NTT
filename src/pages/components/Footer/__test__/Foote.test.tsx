@@ -1,3 +1,5 @@
+// Footer.test.tsx
+// Si tu componente es estatico, o sea, no tiene data variable o consume servicios y adem'as no es tan grande lo ideal es hacer un snapshot para evitar hacer tantos expect ya que al final hacer expect por cada texto de algo estatico no tiene mucho aporte.
 import { render, screen } from "@testing-library/react";
 import { Footer } from "../Footer";
 

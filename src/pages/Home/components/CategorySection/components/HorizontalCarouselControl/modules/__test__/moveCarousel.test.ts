@@ -1,20 +1,22 @@
 import { moveCarousel } from "../carousel";
 
+let track: HTMLDivElement | null;
+const lastSectionShiftSize = 654;
+const clickedPointIndex = 2;
+const totalPoints = 3;
+
+track = document.createElement("div");
+track.classList.add("carousel-track");
+
+Object.defineProperty(track, "clientWidth", {
+    value: 350,
+    writable: true,
+});
+
 describe("moveCarousel function", () => {
-    let track: HTMLDivElement | null;
-    const lastSectionShiftSize = 654;
-    const clickedPointIndex = 2;
-    const totalPoints = 3;
 
     beforeEach(() => {
-
-        track = document.createElement("div");
-        track.classList.add("carousel-track");
-
-        Object.defineProperty(track, "clientWidth", {
-            value: 350,
-            writable: true,
-        });
+        // el before each es para inciiar algo antes de cada test, si lo que se inicia siempre es lo mismo puede ir fuera
     });
 
     it("should set transform style for the last point", () => {
