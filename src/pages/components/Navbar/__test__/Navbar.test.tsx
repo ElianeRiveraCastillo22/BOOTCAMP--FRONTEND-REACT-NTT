@@ -39,7 +39,9 @@ describe("Navbar", () => {
 
         const logo = screen.getByAltText("Store logo");
         expect(logo).toBeInTheDocument();
-        expect(logo.closest("a")).toHaveAttribute("href", "/");
+
+        // tu test de la 60 ya hace esto
+        // expect(logo.closest("a")).toHaveAttribute("href", "/");
 
         const cartCounter = screen.getByLabelText("Number of products in cart");
         expect(cartCounter).toHaveTextContent("0");
@@ -91,7 +93,8 @@ describe("Navbar", () => {
             screen.getAllByPlaceholderText("Search product...");
 
         fireEvent.change(searchInputs[0], { target: { value: "Essence" } });
-        fireEvent.change(searchInputs[1], { target: { value: "Essence" } });
+        // por qu'e es necesario este change?
+        // fireEvent.change(searchInputs[1], { target: { value: "Essence" } });
 
         expect(setSearchByTitleMock).toHaveBeenCalledWith("Essence");
     });

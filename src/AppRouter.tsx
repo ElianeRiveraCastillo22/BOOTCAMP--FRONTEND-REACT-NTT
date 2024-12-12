@@ -1,3 +1,4 @@
+// test?
 import { BrowserRouter, Navigate, Route } from "react-router-dom"
 import { Home } from "./pages/Home/home"
 import { RoutesWithNotFound } from "./pages/components/RoutesWithNotFound/routesWithNotFound"

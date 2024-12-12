@@ -36,6 +36,7 @@ describe("ProductSection", () => {
     });
 
     it("should render products when they are available", () => {
+        // por que necesitas hacer esto? tu componente ya recibe una prop con la data e internamente usa showProducts no es necesario hacer esto
         (showProducts as jest.Mock).mockReturnValue(
             mockDataProducts.map((product) => (
                 <div key={product.id} data-testid="product-card">
